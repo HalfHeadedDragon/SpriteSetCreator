@@ -1,0 +1,39 @@
+.def
+{
+    margin: 0px;
+    padding: 0px;
+}
+.page
+{
+    color: white;
+    overflow: hidden;
+    user-select: none;
+    font-family: 'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
+}
+.navigation
+{
+    width:50px;
+    height: 100vh;
+    float:left;
+    font-size:30px;
+    text-align: center;
+    background-color: #333333;
+}
+.icon
+{
+    color:#AAAAAA;
+}
+.icon-selected
+{
+    color:white;
+}
+.icon:hover
+{
+    color:white;
+}
+.content
+{
+    width:94%;
+    float:left;
+    overflow: hidden;
+}
