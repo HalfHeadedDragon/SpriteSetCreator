@@ -30,10 +30,11 @@
     list-style: none;
     width:100%;
     text-align: center;
+    margin-top:5px;
 }
 .item:hover
 {
-    background-color: #333333;
+    background-color: #444444;
 }
 .item-selected
 {

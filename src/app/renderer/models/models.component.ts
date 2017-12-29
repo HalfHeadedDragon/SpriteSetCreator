@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, NgZone } from '@angular/core';
 
 import { ModelsController } from "./models.controller";
 
@@ -11,9 +11,19 @@ import { ModelsController } from "./models.controller";
 export class ModelsComponent
 {
     @Input() Models:ModelsController;
-    public constructor() {}
+    public ModelList:any[];
+    public constructor(private _Zone:NgZone) {}
     public ngOnInit() : void 
     {
-        console.log(this.Models);
+        this.ModelList = [];
+        this.Models.AddZone(this._Zone, this.Refresh.bind(this));
+    }
+    private Refresh()
+    {
+        this.ModelList = this.Models.Models;
+    }
+    public Select(Value:any)
+    {
+        this.Models.Select(Value);
     }
 }

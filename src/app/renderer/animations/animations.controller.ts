@@ -46,5 +46,13 @@ class AnimationsController
     public ToggleReplay(Value:boolean)
     {
         this._Replay = Value;
+        if(!Value) this.Stop();
+    }
+    private Stop()
+    {
+        for(let i in this._Animations)
+        {
+            this._Animations[i].Reset();
+        }
     }
 }

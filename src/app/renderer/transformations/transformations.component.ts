@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 
+import { ModelsController } from "./../models/models.controller";
+
 @Component(
 {
     selector: 'transformations',
@@ -8,6 +10,7 @@ import { Component, Input } from '@angular/core';
 })
 export class TransformationsComponent
 {
+    @Input() Models:ModelsController;
     public constructor() {}
     public ngOnInit() : void 
     {

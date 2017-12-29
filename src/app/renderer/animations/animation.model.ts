@@ -30,4 +30,11 @@ class AnimationModel
     {
         this._Mixer.update(Delta);
     }
+    public Reset() : void
+    {
+        for(let i in this._Animations)
+        {
+            this._Animations[i].reset();
+        }
+    }
 }

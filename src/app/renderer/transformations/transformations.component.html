@@ -1,23 +1,23 @@
 <div class="main">
     <p class="def title">Transformations</p>
     <div class="def body">
-        <div class="def col-md-12">
+        <div *ngIf="Models.Selected" class="def col-md-12">
             <label class="def label col-md-12">Position</label>
-            <input type="number" class="def input-3" />
-            <input type="number" class="def input-3" />
-            <input type="number" class="def input-3" />
+            <input type="number" class="def input-3" [(ngModel)]="Models.Selected.position.x"/>
+            <input type="number" class="def input-3" [(ngModel)]="Models.Selected.position.y"/>
+            <input type="number" class="def input-3" [(ngModel)]="Models.Selected.position.z"/>
         </div>
-        <div class="def col-md-12">
+        <div *ngIf="Models.Selected" class="def col-md-12">
             <label class="def label col-md-12">Rotation</label>
-            <input type="number" class="def input-3" />
-            <input type="number" class="def input-3" />
-            <input type="number" class="def input-3" />
+            <input type="number" class="def input-3" [(ngModel)]="Models.RotationX" />
+            <input type="number" class="def input-3" [(ngModel)]="Models.RotationY" />
+            <input type="number" class="def input-3" [(ngModel)]="Models.RotationZ"/>
         </div>
-        <div class="def col-md-12">
+        <div *ngIf="Models.Selected" class="def col-md-12">
             <label class="def label col-md-12">Scale</label>
-            <input type="number" class="def input-3" />
-            <input type="number" class="def input-3" />
-            <input type="number" class="def input-3" />
+            <input type="number" class="def input-3" [(ngModel)]="Models.Selected.scale.x"/>
+            <input type="number" class="def input-3" [(ngModel)]="Models.Selected.scale.y"/>
+            <input type="number" class="def input-3" [(ngModel)]="Models.Selected.scale.z"/>
         </div>
     </div>
 </div>
