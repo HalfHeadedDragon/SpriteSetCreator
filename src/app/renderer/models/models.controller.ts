@@ -45,7 +45,7 @@ export class ModelsController
     private LoadModelCallback(Geometry, Materials) : void
     {
         this._Animations.PrepareGeometry(Geometry);
-        let Mesh = new Three.SkinnedMesh( Geometry, new Three.MeshLambertMaterial( { color: 0xff0000, skinning: true }));
+        let Mesh = new Three.SkinnedMesh( Geometry, new Three.MeshLambertMaterial( { color: 0xdddddd, skinning: true }));
         Mesh.scale.set(100,100,100);
         Mesh.name = "Model " + (this._Models.length + 1);
         Mesh.visible = this._Selected == null;
