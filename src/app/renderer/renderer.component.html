@@ -2,16 +2,16 @@
     <p class="def title">Renderer</p>
     <div class="def body">
         <div class="def left-sidebar">
-            <options></options>
-            <camera></camera>
-            <light></light>
-            <replay></replay>
+            <options [Renderer]="Renderer"></options>
+            <replay [Animations]="Renderer.Animations"></replay>
+            <camera [Camera]="Renderer.Camera"></camera>
+            <light [Light]="Renderer.Light"></light>
         </div>
         <div id="canvas-parent" class="def canvas-parent">
             <canvas id="canvas"></canvas>
         </div>
         <div class="def right-sidebar">
-            <models></models>
+            <models [Models]="Renderer.Models"></models>
             <transformations></transformations>
             <animations></animations>
             <materials></materials>

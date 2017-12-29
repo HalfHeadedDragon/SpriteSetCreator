@@ -14,9 +14,10 @@ export class RendererComponent
 {
     @Input() Document:Document;
     private _Renderer:Renderer;
+    public get Renderer():Renderer { return this._Renderer; }
     public constructor() {}
     public ngOnInit() : void 
     {
-        this._Renderer = new Renderer({X:500, Y:500}, this.Document);
+        this._Renderer = new Renderer({X:512, Y:512}, this.Document);
     }
 }

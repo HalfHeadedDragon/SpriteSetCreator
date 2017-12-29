@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 
+import { AnimationsController } from "./../animations/animations.controller";
+
 @Component(
 {
     selector: 'replay',
@@ -8,6 +10,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ReplayComponent
 {
+    @Input() Animations:AnimationsController;
     public constructor() {}
     public ngOnInit() : void 
     {

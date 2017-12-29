@@ -10,13 +10,8 @@ import { AnimationsController } from "./animations/animations.controller";
 
 class Renderer
 {
-    
-    
     private _Scene:Three.Scene;
-    
     private _Target:HTMLCanvasElement;
-    
-    
     private _Resolution:any;
     private _Document:Document;
     private _Light:LightController;
@@ -30,6 +25,8 @@ class Renderer
     public set ResolutionY(value:number) { this._Resolution.Y = value; this.UpdateResolution(); }
     public get Light():LightController { return this._Light; }
     public get Camera():CameraController { return this._Camera; }
+    public get Models():ModelsController { return this._Models; }
+    public get Animations():AnimationsController { return this._Animations; }
     public constructor(Resolution:any, Document:Document)
     {
         this._Resolution = Resolution;
@@ -54,6 +51,7 @@ class Renderer
     public UpdateResolution() : void
     {
         this._Camera.UpdateResolution(this._Resolution);
+        this._Renderer.setSize( this._Resolution.X, this._Resolution.Y );
     }
     public SetDocument(Document:Document) : void
     {

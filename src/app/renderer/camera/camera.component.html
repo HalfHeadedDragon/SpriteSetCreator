@@ -1,17 +1,17 @@
 <div class="main">
     <p class="def title">Camera</p>
     <div class="def body">
-        <div class="def col-md-12">
+        <div *ngIf="Camera" class="def col-md-12">
             <label class="def label col-md-12">Position</label>
-            <input type="number" class="def input-3" />
-            <input type="number" class="def input-3" />
-            <input type="number" class="def input-3" />
+            <input type="number" class="def input-3" [(ngModel)]="Camera.Camera.position.x" />
+            <input type="number" class="def input-3" [(ngModel)]="Camera.Camera.position.y" />
+            <input type="number" class="def input-3" [(ngModel)]="Camera.Camera.position.z" />
         </div>
-        <div class="def col-md-12">
+        <div *ngIf="Camera" class="def col-md-12">
             <label class="def label col-md-12">Rotation</label>
-            <input type="number" class="def input-3" />
-            <input type="number" class="def input-3" />
-            <input type="number" class="def input-3" />
+            <input type="number" class="def input-3" [(ngModel)]="Camera.RotationX"/>
+            <input type="number" class="def input-3" [(ngModel)]="Camera.RotationY"/>
+            <input type="number" class="def input-3" [(ngModel)]="Camera.RotationZ"/>
         </div>
     </div>
 </div>

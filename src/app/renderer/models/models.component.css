@@ -20,8 +20,26 @@
 }
 .body
 {
-    height: 100vh;
-    min-height: 100vh;
     font-size:10px;
     padding:5px;
+}
+.item
+{
+    background-color: #333333;
+    cursor: pointer;
+    list-style: none;
+    width:100%;
+    text-align: center;
+}
+.item:hover
+{
+    background-color: #333333;
+}
+.item-selected
+{
+    background-color: #FF3333 !important;
+}
+.item-selected:hover
+{
+    background-color: #FF1111 !important;
 }

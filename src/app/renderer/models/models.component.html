@@ -1,6 +1,11 @@
 <div class="main">
     <p class="def title">Models</p>
-    <div class="def body">
-
+    <div class="def body row">
+        <div *ngIf="Models" class="def col-md-12">
+            <ul class="def types col-md-4">
+                <li class="item"> - None - </li>
+                <li *ngFor="let Model of Models.Models" class="item">{{Model.name}}</li>
+            </ul>
+        </div>
     </div>
 </div>

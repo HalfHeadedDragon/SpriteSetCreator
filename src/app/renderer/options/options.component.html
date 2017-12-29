@@ -2,10 +2,10 @@
     <p class="def title">Options</p>
     <div class="def body row">
         <a class="button-control col-md-12">Record</a>
-        <div class="def col-md-12">
+        <div *ngIf="Renderer" class="def col-md-12">
             <label class="label col-md-12">Size</label>
-            <input type="number" class="input-2" />
-            <input type="number" class="input-2" />
+            <input type="number" class="input-2" [(ngModel)]="Renderer.ResolutionX" />
+            <input type="number" class="input-2" [(ngModel)]="Renderer.ResolutionY" />
         </div>
     </div>
 </div>

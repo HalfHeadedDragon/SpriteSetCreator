@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 
+import { ModelsController } from "./models.controller";
+
 @Component(
 {
     selector: 'models',
@@ -8,9 +10,10 @@ import { Component, Input } from '@angular/core';
 })
 export class ModelsComponent
 {
+    @Input() Models:ModelsController;
     public constructor() {}
     public ngOnInit() : void 
     {
-        
+        console.log(this.Models);
     }
 }

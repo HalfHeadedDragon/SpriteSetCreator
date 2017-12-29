@@ -1,21 +1,27 @@
 <div class="main">
     <p class="def title">Light</p>
     <div class="def body">
-        <div class="def col-md-12">
+        <div *ngIf="Light" class="def col-md-12">
             <label class="def label col-md-12">Intensity</label>
-            <input type="number" class="def input-1" />
+            <input type="number" class="def input-1" [(ngModel)]="Light.Light.intensity" />
         </div>
-        <div class="def col-md-12">
+        <div *ngIf="Light" class="def col-md-12">
             <label class="def label col-md-12">Position</label>
-            <input type="number" class="def input-3" />
-            <input type="number" class="def input-3" />
-            <input type="number" class="def input-3" />
+            <input type="number" class="def input-3" [(ngModel)]="Light.Light.position.x" />
+            <input type="number" class="def input-3" [(ngModel)]="Light.Light.position.y" />
+            <input type="number" class="def input-3" [(ngModel)]="Light.Light.position.z" />
         </div>
-        <div class="def col-md-12">
+        <div *ngIf="Light" class="def col-md-12">
             <label class="def label col-md-12">Rotation</label>
-            <input type="number" class="def input-3" />
-            <input type="number" class="def input-3" />
-            <input type="number" class="def input-3" />
+            <input type="number" class="def input-3" [(ngModel)]="Light.RotationX" />
+            <input type="number" class="def input-3" [(ngModel)]="Light.RotationY" />
+            <input type="number" class="def input-3" [(ngModel)]="Light.RotationZ" />
+        </div>
+        <div *ngIf="Light" class="def col-md-12">
+            <label class="def label col-md-12">Ambient</label>
+            <input type="number" class="def input-3" [(ngModel)]="Light.Ambient.color.r" />
+            <input type="number" class="def input-3" [(ngModel)]="Light.Ambient.color.g" />
+            <input type="number" class="def input-3" [(ngModel)]="Light.Ambient.color.b" />
         </div>
     </div>
 </div>

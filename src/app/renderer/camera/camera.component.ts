@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 
+import { CameraController } from "./camera.controller";
+
 @Component(
 {
     selector: 'camera',
@@ -8,6 +10,7 @@ import { Component, Input } from '@angular/core';
 })
 export class CameraComponent
 {
+    @Input() Camera:CameraController;
     public constructor() {}
     public ngOnInit() : void 
     {

@@ -9,6 +9,7 @@ class AnimationsController
     private _Replay:boolean;
     private _Clock:Three.Clock;
     private _Animations:AnimationModel[];
+    public get Replay():boolean { return this._Replay; }
     public constructor()
     {
         this.Init();
@@ -41,5 +42,9 @@ class AnimationsController
         {
             Geometry.animations[i].name = "Animation" + i;
         }
+    }
+    public ToggleReplay(Value:boolean)
+    {
+        this._Replay = Value;
     }
 }

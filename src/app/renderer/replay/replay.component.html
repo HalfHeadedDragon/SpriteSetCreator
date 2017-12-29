@@ -1,6 +1,7 @@
 <div class="main">
     <p class="def title">Replay</p>
     <div class="def body row">
-        <span class="button-control col-md-12">Play</span>
+        <span *ngIf="Animations && !Animations.Replay" class="button-control col-md-12" (click)="Animations.ToggleReplay(true)">Play</span>
+        <span *ngIf="Animations && Animations.Replay" class="button-control col-md-12" (click)="Animations.ToggleReplay(false)">Stop</span>
     </div>
 </div>

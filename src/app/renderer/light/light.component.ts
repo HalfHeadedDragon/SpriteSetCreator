@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 
+import { LightController } from "./light.controller";
+
 @Component(
 {
     selector: 'light',
@@ -8,6 +10,7 @@ import { Component, Input } from '@angular/core';
 })
 export class LightComponent
 {
+    @Input() Light:LightController;
     public constructor() {}
     public ngOnInit() : void 
     {

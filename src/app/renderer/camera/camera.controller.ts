@@ -6,6 +6,12 @@ class CameraController
 {
     private _Camera:Three.Camera;
     public get Camera():Three.Camera { return this._Camera; }
+    public get RotationX():number { return (this._Camera.rotation.x / Math.PI) * 180; }
+    public get RotationY():number { return (this._Camera.rotation.y / Math.PI) * 180; }
+    public get RotationZ():number { return (this._Camera.rotation.z / Math.PI) * 180; }
+    public set RotationX(value:number) { this._Camera.rotation.x = (value / 180) * Math.PI; }
+    public set RotationY(value:number) { this._Camera.rotation.y = (value / 180) * Math.PI; }
+    public set RotationZ(value:number) { this._Camera.rotation.z = (value / 180) * Math.PI; }
     public constructor(Resolution:any)
     {
         this.Init(Resolution, new Three.Vector3(0, 180, 600), new Three.Euler(0, 0, 0));
