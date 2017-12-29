@@ -1,6 +1,10 @@
 <div class="main">
     <p class="def title">Animations</p>
     <div class="def body">
-
+        <div *ngIf="Animations" class="def col-md-12">
+            <div *ngFor="let Anim of Weights; let i = index" class="def col-md-12">
+                <label class="def label col-md-5">Animation:</label>
+            </div>
+        </div>
     </div>
 </div>

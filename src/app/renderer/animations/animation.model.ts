@@ -7,6 +7,7 @@ class AnimationModel
     private _Clips:Three.AnimationClip[];
     private _Animations:any[];
     private _Mixer:Three.AnimationMixer;
+    public get Actions():number { return this._Animations.length; }
     public constructor(Geometry:any, Mesh:Three.Mesh)
     {
         this.Init(Geometry, Mesh);
@@ -20,7 +21,7 @@ class AnimationModel
         {
             let Clip = Three.AnimationClip.findByName(Geometry.animations, "Animation"+i);
             let Anim = this._Mixer.clipAction(Clip);
-            Anim.weight = (i == 0)?1:0;
+            Anim.weight = 1;
             Anim.play();
             this._Clips.push(Clip);
             this._Animations.push(Anim);
@@ -35,6 +36,13 @@ class AnimationModel
         for(let i in this._Animations)
         {
             this._Animations[i].reset();
+        }
+    }
+    public UpdateWeights(Weights:number[])
+    {
+        for(let i in this._Animations)
+        {
+            this._Animations[i].weight = Weights[i];
         }
     }
 }
