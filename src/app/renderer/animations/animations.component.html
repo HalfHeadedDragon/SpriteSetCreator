@@ -2,8 +2,9 @@
     <p class="def title">Animations</p>
     <div class="def body">
         <div *ngIf="Animations" class="def col-md-12">
-            <div *ngFor="let Anim of Weights; let i = index" class="def col-md-12">
-                <label class="def label col-md-5">Animation:</label>
+            <div *ngFor="let Anim of Animations.Weights; let index = index; trackBy:trackByIndex;" class="def col-md-12">
+                <label class="def label col-md-5">Animation {{index+1}}:</label>
+                <input type="number" class="def col-md-6" [(ngModel)]="Animations.Weights[index]" (change)="UpdateWeights()" />
             </div>
         </div>
     </div>

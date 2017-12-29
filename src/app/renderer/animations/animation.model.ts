@@ -21,7 +21,7 @@ class AnimationModel
         {
             let Clip = Three.AnimationClip.findByName(Geometry.animations, "Animation"+i);
             let Anim = this._Mixer.clipAction(Clip);
-            Anim.weight = 1;
+            Anim.weight = 0;
             Anim.play();
             this._Clips.push(Clip);
             this._Animations.push(Anim);

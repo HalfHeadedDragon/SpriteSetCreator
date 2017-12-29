@@ -10,11 +10,13 @@ import { AnimationsController } from "./animations.controller";
 })
 export class AnimationsComponent
 {
-    public Weights:number[];
     @Input() Animations:AnimationsController;
     public constructor() {}
     public ngOnInit() : void 
     {
-        this.Weights = this.Animations.Weights;
+    }
+    public UpdateWeights() : void
+    {
+        this.Animations.UpdateWeights();
     }
 }

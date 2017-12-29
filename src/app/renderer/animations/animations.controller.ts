@@ -42,7 +42,7 @@ class AnimationsController
         {
             this._Weights.push(0);
         }
-        //Animation.UpdateWeights(this._Weights);
+        Animation.UpdateWeights(this._Weights);
         this._Animations.push(Animation);
     }
     public PrepareGeometry(Geometry:any) : void
