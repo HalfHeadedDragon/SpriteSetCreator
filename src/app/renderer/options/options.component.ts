@@ -16,4 +16,8 @@ export class OptionsComponent
     {
         
     }
+    public Record()
+    {
+        this.Renderer.Recorder.Record();
+    }
 }

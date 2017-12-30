@@ -1,7 +1,7 @@
 <div class="main">
     <p class="def title">Options</p>
     <div class="def body row">
-        <a class="button-control col-md-12">Record</a>
+        <a class="button-control col-md-12" (click)="Record()">Record</a>
         <div *ngIf="Renderer" class="def col-md-12">
             <label class="label col-md-12">Size</label>
             <input type="number" class="input-2" [(ngModel)]="Renderer.ResolutionX" />

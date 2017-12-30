@@ -7,6 +7,7 @@ import { CameraController } from "./camera/camera.controller";
 import { ModelsController } from "./models/models.controller";
 import { LightController } from "./light/light.controller";
 import { AnimationsController } from "./animations/animations.controller";
+import { RecordController } from "./record.controller";
 
 class Renderer
 {
@@ -19,6 +20,7 @@ class Renderer
     private _Models:ModelsController;
     private _Animations:AnimationsController;
     private _Renderer:Three.WebGLRenderer;
+    private _Recorder:RecordController;
     public get ResolutionX():number { return this._Resolution.X; }
     public set ResolutionX(value:number) { this._Resolution.X = value; this.UpdateResolution(); }
     public get ResolutionY():number { return this._Resolution.Y; }
@@ -27,6 +29,7 @@ class Renderer
     public get Camera():CameraController { return this._Camera; }
     public get Models():ModelsController { return this._Models; }
     public get Animations():AnimationsController { return this._Animations; }
+    public get Recorder():RecordController { return this._Recorder; }
     public constructor(Resolution:any, Document:Document)
     {
         this._Resolution = Resolution;
@@ -42,11 +45,20 @@ class Renderer
         this._Light = new LightController(this._Scene);
         this._Animations = new AnimationsController();
         this._Models = new ModelsController(this._Scene, this._Animations);
-        this._Renderer = new Three.WebGLRenderer({canvas:this._Target, alpha:true});
+        this._Recorder = new RecordController(this._Target, this._Document, this._Animations, this);
+        this._Renderer = new Three.WebGLRenderer({canvas:this._Target, alpha:true, preserveDrawingBuffer: true});
         this._Renderer.setPixelRatio( window.devicePixelRatio );
         this._Renderer.setSize( Resolution.X, Resolution.Y );
         this._Renderer.setClearColor(0x000000, 0);
         window.requestAnimationFrame(this.Draw.bind(this));
+    }
+    public ReInit() : void
+    {
+        this._Target = document.getElementById("canvas") as HTMLCanvasElement;
+        this._Renderer = new Three.WebGLRenderer({canvas:this._Target, alpha:true, preserveDrawingBuffer: true});
+        this._Renderer.setPixelRatio( window.devicePixelRatio );
+        this._Renderer.setSize( this._Resolution.X, this._Resolution.Y );
+        this._Renderer.setClearColor(0x000000, 0);
     }
     public UpdateResolution() : void
     {
@@ -62,6 +74,10 @@ class Renderer
         this._Animations.Update();
         this._Renderer.render( this._Scene, this._Camera.Camera );
         window.requestAnimationFrame(this.Draw.bind(this));
+    }
+    public Redraw() : void
+    {
+        this._Renderer.render( this._Scene, this._Camera.Camera );
     }
     private LoadModel(Path:string):void
     {

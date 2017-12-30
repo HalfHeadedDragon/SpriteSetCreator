@@ -18,6 +18,15 @@ export class RendererComponent
     public constructor() {}
     public ngOnInit() : void 
     {
-        this._Renderer = new Renderer({X:512, Y:512}, this.Document);
+        if(this.Document.Data != null)
+        {
+            this._Renderer = this.Document.Data;
+            this._Renderer.ReInit();
+        }
+        else
+        {
+            this._Renderer = new Renderer({X:512, Y:512}, this.Document);
+            this.Document.Data = this._Renderer;
+        }
     }
 }

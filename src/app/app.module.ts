@@ -13,6 +13,7 @@ import { ReplayComponent } from "./renderer/replay/replay.component";
 import { TransformationsComponent } from "./renderer/transformations/transformations.component";
 
 import { RendererComponent } from "./renderer/renderer.component";
+import { PreviewComponent } from "./preview/preview.component";
 import { AppComponent } from './app.component';
 
 @NgModule(
@@ -28,6 +29,7 @@ import { AppComponent } from './app.component';
     ReplayComponent,
     TransformationsComponent,
     RendererComponent,
+    PreviewComponent,
     AppComponent,
   ],
   imports:

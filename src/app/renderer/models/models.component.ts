@@ -17,6 +17,7 @@ export class ModelsComponent
     {
         this.ModelList = [];
         this.Models.AddZone(this._Zone, this.Refresh.bind(this));
+        this.Refresh();
     }
     private Refresh()
     {

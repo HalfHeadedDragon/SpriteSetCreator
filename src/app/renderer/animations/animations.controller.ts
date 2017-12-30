@@ -6,6 +6,7 @@ import { AnimationModel } from "./animation.model";
 
 class AnimationsController
 {
+    private _Duration:number;
     private _Weights:number[]
     private _Replay:boolean;
     private _Clock:Three.Clock;
@@ -69,6 +70,28 @@ class AnimationsController
         for(let i in this._Animations)
         {
             this._Animations[i].UpdateWeights(this._Weights);
+        }
+    }
+    private CalculateDuration() : void
+    {
+        this._Duration = 0;
+        for(let i in this._Animations)
+        {
+            let Duration = this._Animations[i].CalculateDuration();
+            if(this._Duration < Duration) this._Duration = Duration;
+        }
+    }
+    public PrepareCapture() : void
+    {
+        this.CalculateDuration();
+    }
+    public Tick(Framerate:number) : void
+    {
+        let Value = this._Duration / Framerate;
+        console.log(Value);
+        for(let i in this._Animations)
+        {
+            this._Animations[i].Update( Value );
         }
     }
 }

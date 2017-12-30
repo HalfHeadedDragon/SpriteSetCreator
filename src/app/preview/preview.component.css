@@ -1,0 +1,44 @@
+.def
+{
+    margin: 0px;
+    padding: 0px;
+}
+.main
+{
+    margin: 0px;
+    padding: 0px;
+}
+.title
+{
+    padding-top: 2px;
+    height: 25px;
+    padding-left: 30px;
+    font-size:13px;
+    width:100%;
+    background-color: #333333;
+}
+.body
+{
+    height: 100vh;
+    min-height: 100vh;
+}
+.icon
+{
+    width: 256px;
+    height: 256px;
+}
+.objects
+{
+    overflow: auto;
+    height: 90%;
+    padding-top: 5px;
+    color: white;
+}
+.object
+{
+    cursor: default;
+    float:left;
+    font-size:11px;
+    list-style: none;
+    text-align: center;
+}

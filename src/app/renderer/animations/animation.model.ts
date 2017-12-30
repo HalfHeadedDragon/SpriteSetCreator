@@ -38,11 +38,26 @@ class AnimationModel
             this._Animations[i].reset();
         }
     }
-    public UpdateWeights(Weights:number[])
+    public UpdateWeights(Weights:number[]) : void
     {
         for(let i in this._Animations)
         {
             this._Animations[i].weight = Weights[i];
         }
+    }
+    public CalculateDuration() : number
+    {
+        let Duration = 0;
+        for(let i in this._Clips)
+        {
+            if(this._Animations[i].weight > 0)
+            {
+                if(this._Clips[i].duration > Duration)
+                {
+                    Duration = this._Clips[i].duration;
+                }
+            }
+        }
+        return Duration;
     }
 }

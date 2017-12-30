@@ -15,6 +15,7 @@ export class AppComponent
   public Document:Document;
   private _Title:string;
   private _SideBarOption:number;
+  public get SideBarOption():number { return this._SideBarOption; }
   public constructor(private _ElectronService: ElectronService, private _Zone:NgZone)
   {
     this.Document = new Document();
