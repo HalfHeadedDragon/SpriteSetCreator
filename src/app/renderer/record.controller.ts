@@ -56,5 +56,6 @@ class RecordController
             }
         }
         this._Renderer.Light.SwitchLight(0);
+        console.log(this._Document);
     }
 }

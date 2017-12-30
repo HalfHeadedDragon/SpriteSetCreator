@@ -12,14 +12,23 @@ import { Document } from "./../document";
 })
 export class PreviewComponent
 {
+    public Exposure:boolean;
     @Input() Document:Document;
-    public constructor(private Sanitizer:DomSanitizer) {}
-    public ngOnInit() : void 
+    public constructor(private Sanitizer:DomSanitizer) 
     {
-        
+        this.Exposure = false;
     }
+    public ngOnInit() : void {}
     private Sanitize(Url:string)
     {
         return this.Sanitizer.bypassSecurityTrustResourceUrl(Url);
+    }
+    private ToggleSprite()
+    {
+        this.Exposure = false;
+    }
+    private ToggleExposure()
+    {
+        this.Exposure = true;
     }
 }

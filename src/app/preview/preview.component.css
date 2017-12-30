@@ -19,8 +19,8 @@
 }
 .body
 {
-    height: 100vh;
-    min-height: 100vh;
+    height: 100vh; 
+    min-height: 100vh; 
 }
 .icon
 {
@@ -41,4 +41,30 @@
     font-size:11px;
     list-style: none;
     text-align: center;
+}
+.options
+{
+    background-color: #222222;
+    height:25px;
+    margin: 0px;
+    padding: 0px;
+}
+.button-control
+{
+    color:white;
+    background-color: #333333;
+    font-size:14px;
+    text-align: center;
+    cursor:pointer;
+    height:25px;
+    margin: 0px;
+    padding: 0px;
+}
+.button-control:hover
+{
+    background-color: #444444;
+}
+.button-selected
+{
+    background-color: #444444 !important;
 }

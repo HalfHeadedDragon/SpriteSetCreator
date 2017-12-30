@@ -1,7 +1,18 @@
 <div class="main">
     <p class="def title">Preview</p>
     <div class="def body">
-        <ul class="def objects col-md-12">
+        <div *ngIf="Document.Images.length > 0" class="options row">
+            <span class="button-control col-md-1" [ngClass]="{'button-selected': !Exposure}" (click)="ToggleSprite()">Sprites</span>
+            <span *ngIf="Document.Exposition.length > 0" class="button-control col-md-1" [ngClass]="{'button-selected': Exposure}" (click)="ToggleExposure()">Exposure</span>
+        </div>
+        <ul *ngIf="!Exposure" class="def objects col-md-12">
+            <li *ngFor="let Object of Document.Images" class="object">
+                <div>
+                    <img class="icon" [src]="Object.DataUrl" />
+                </div>
+            </li>
+        </ul>
+        <ul *ngIf="Exposure" class="def objects col-md-12">
             <li *ngFor="let Object of Document.Exposition" class="object">
                 <div>
                     <img class="icon" [src]="Object.DataUrl" />
