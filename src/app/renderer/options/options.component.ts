@@ -10,14 +10,20 @@ import { Renderer } from "./../renderer";
 })
 export class OptionsComponent
 {
+    private _Toggled:boolean;
+    public get Toggled():boolean { return this._Toggled; }
     @Input() Renderer:Renderer;
-    public constructor() {}
-    public ngOnInit() : void 
+    public constructor()
     {
-        
+        this._Toggled = true;
     }
+    public ngOnInit() : void {}
     public Record()
     {
         this.Renderer.Recorder.Record();
+    }
+    public Toggle() : void
+    {
+        this._Toggled = !this._Toggled;
     }
 }

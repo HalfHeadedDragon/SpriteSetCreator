@@ -7,7 +7,7 @@
 {
     margin: 0px;
     padding: 0px;
-    height:20vh;
+    height: auto;
 }
 .title
 {
@@ -17,6 +17,7 @@
     font-size:13px;
     width:100%;
     background-color: #252525;
+    cursor: pointer;
 }
 .body
 {
@@ -27,6 +28,14 @@
 {
     text-align: center;
     margin-top:7px;
+}
+.input-1
+{
+    width:99%;
+    height:18px;
+    border-width: 0px;
+    background-color:#181818;
+    color:white;
 }
 .input-2
 {
@@ -39,7 +48,7 @@
 .button-control
 {
     color:white;
-    background-color: #FF3333;
+    background-color: #333333;
     height:22px;
     font-size:12px;
     text-align: center;
@@ -47,5 +56,14 @@
 }
 .button-control:hover
 {
-    background-color: #FF1111;
+    background-color: #444444;
+}
+.button-record
+{
+    background-color: #FF3333 !important;
+    margin-bottom: 5px;
+}
+.button-record:hover
+{
+    background-color: #FF1111 !important;
 }

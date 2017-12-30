@@ -1,6 +1,6 @@
 <div class="main">
-    <p class="def title">Camera</p>
-    <div class="def body">
+    <p class="def title" (click) = "Toggle()">Camera</p>
+    <div *ngIf="Toggled" class="def body">
         <div *ngIf="Camera" class="def col-md-12">
             <label class="def label col-md-12">Position</label>
             <input type="number" class="def input-3" [(ngModel)]="Camera.Camera.position.x" />

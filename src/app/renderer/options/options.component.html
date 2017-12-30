@@ -1,11 +1,19 @@
 <div class="main">
-    <p class="def title">Options</p>
-    <div class="def body row">
-        <a class="button-control col-md-12" (click)="Record()">Record</a>
+    <p class="def title" (click) = "Toggle()">Record</p>
+    <div *ngIf="Toggled" class="def body row">
+        <a class="button-control button-record col-md-12" (click)="Record()">Record</a>
         <div *ngIf="Renderer" class="def col-md-12">
             <label class="label col-md-12">Size</label>
             <input type="number" class="input-2" [(ngModel)]="Renderer.ResolutionX" />
             <input type="number" class="input-2" [(ngModel)]="Renderer.ResolutionY" />
+        </div>
+        <div *ngIf="Renderer" class="def col-md-12">
+            <label class="label col-md-12">Framerate</label>
+            <input type="number" class="input-1" [(ngModel)]="Renderer.Recorder.Framerate" />
+        </div>
+        <div class="col-md-12 row">
+            <label class="label col-md-12">Light Exposition</label>
+            <input type="checkbox" class="col-md-12 active-check" [(ngModel)]="Renderer.Recorder.LightExposition" />
         </div>
     </div>
 </div>

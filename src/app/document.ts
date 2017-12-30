@@ -6,13 +6,16 @@ class Document
 {
     private _Data:any;
     private _Images:ImageObject[];
+    private _Exposition:ImageObject[];
     public OnModelImport:Function[];
     public get Data():any { return this._Data; }
     public set Data(value:any) { this._Data = value; }
     public get Images():ImageObject[] { return this._Images; }
+    public get Exposition():ImageObject[] { return this._Exposition; }
     public constructor()
     {
         this._Images = [];
+        this._Exposition = [];
         this.OnModelImport = [];
     }
     public ImportModel(Path)

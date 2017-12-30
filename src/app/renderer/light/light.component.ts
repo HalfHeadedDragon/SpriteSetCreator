@@ -10,10 +10,16 @@ import { LightController } from "./light.controller";
 })
 export class LightComponent
 {
+    private _Toggled:boolean;
+    public get Toggled():boolean { return this._Toggled; }
     @Input() Light:LightController;
-    public constructor() {}
-    public ngOnInit() : void 
+    public constructor()
     {
-        
+        this._Toggled = false;
+    }
+    public ngOnInit() : void {}
+    public Toggle() : void
+    {
+        this._Toggled = !this._Toggled;
     }
 }

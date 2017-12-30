@@ -10,9 +10,14 @@ import { ModelsController } from "./models.controller";
 })
 export class ModelsComponent
 {
+    private _Toggled:boolean;
+    public get Toggled():boolean { return this._Toggled; }
     @Input() Models:ModelsController;
     public ModelList:any[];
-    public constructor(private _Zone:NgZone) {}
+    public constructor(private _Zone:NgZone)
+    {
+        this._Toggled = true;
+    }
     public ngOnInit() : void 
     {
         this.ModelList = [];
@@ -26,5 +31,9 @@ export class ModelsComponent
     public Select(Value:any)
     {
         this.Models.Select(Value);
+    }
+    public Toggle() : void
+    {
+        this._Toggled = !this._Toggled;
     }
 }

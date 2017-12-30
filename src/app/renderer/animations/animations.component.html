@@ -1,6 +1,6 @@
 <div class="main">
-    <p class="def title">Animations</p>
-    <div class="def body">
+    <p class="def title" (click) = "Toggle()">Animations</p>
+    <div *ngIf="Toggled" class="def body">
         <div *ngIf="Animations" class="def col-md-12">
             <div *ngFor="let Anim of Animations.Weights; let index = index; trackBy:trackByIndex;" class="def col-md-12">
                 <label class="def label col-md-5">Animation {{index+1}}:</label>

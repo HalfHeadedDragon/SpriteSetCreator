@@ -1,6 +1,6 @@
 <div class="main">
-    <p class="def title">Models</p>
-    <div class="def body row">
+    <p class="def title" (click) = "Toggle()">Models</p>
+    <div *ngIf="Toggled" class="def body row">
         <div *ngIf="Models" class="def col-md-12">
             <ul class="def types col-md-12">
                 <li class="item" [ngClass]="{'item-selected': Models.Selected == null}" (click)="Select(null)"> All </li>

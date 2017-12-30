@@ -1,6 +1,6 @@
 <div class="main">
-    <p class="def title">Light</p>
-    <div class="def body">
+    <p class="def title" (click) = "Toggle()">Light</p>
+    <div *ngIf="Toggled" class="def body">
         <div *ngIf="Light" class="def col-md-12">
             <label class="def label col-md-12">Intensity</label>
             <input type="number" class="def input-1" [(ngModel)]="Light.Light.intensity" />
