@@ -12,10 +12,12 @@ import { Document } from "./../document";
 })
 export class PreviewComponent
 {
+    public Name:string;
     public Exposure:boolean;
     @Input() Document:Document;
-    public constructor(private Sanitizer:DomSanitizer) 
+    public constructor(private _ElectronService: ElectronService, private Sanitizer:DomSanitizer) 
     {
+        this.Name = "Sprite";
         this.Exposure = false;
     }
     public ngOnInit() : void {}
@@ -30,5 +32,22 @@ export class PreviewComponent
     private ToggleExposure()
     {
         this.Exposure = true;
+    }
+    public Export()
+    {
+        let Items;
+        if(this.Exposure) Items = this.Document.Exposition;
+        else
+        {
+            Items = this.Document.Images;
+            for(let i in Items)
+            {
+                Items[i].Name = this.Name + (i+1);
+            }
+        }
+        if(this._ElectronService.isElectronApp)
+        {
+            this._ElectronService.ipcRenderer.send("export-images", Items);
+        }
     }
 }

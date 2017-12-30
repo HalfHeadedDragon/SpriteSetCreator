@@ -25,6 +25,12 @@ class FileSystem
     {
         return JSON.parse(fs.readFileSync(Location, "utf8"));
     }
+    WriteImage(Location, Data)
+    {
+        let CleanData = Data.replace(/^data:image\/\w+;base64,/, "");
+        let ImgBuffer = new Buffer(CleanData, 'base64');
+        fs.writeFileSync(Location, ImgBuffer);
+    }
     ReadDirectoryTree(Location)
     {
         let TreeNode = { Name:path.basename(Location), Type: "Dir", Path: Location, Children:[] }

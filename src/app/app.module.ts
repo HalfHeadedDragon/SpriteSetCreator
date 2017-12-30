@@ -9,6 +9,7 @@ import { LightComponent } from "./renderer/light/light.component";
 import { MaterialsComponent } from "./renderer/materials/materials.component";
 import { ModelsComponent } from "./renderer/models/models.component";
 import { OptionsComponent } from "./renderer/options/options.component";
+import { AdvancedComponent } from "./renderer/advanced/advanced.component";
 import { ReplayComponent } from "./renderer/replay/replay.component";
 import { TransformationsComponent } from "./renderer/transformations/transformations.component";
 
@@ -26,6 +27,7 @@ import { AppComponent } from './app.component';
     MaterialsComponent,
     ModelsComponent,
     OptionsComponent,
+    AdvancedComponent,
     ReplayComponent,
     TransformationsComponent,
     RendererComponent,

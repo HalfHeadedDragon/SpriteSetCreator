@@ -35,27 +35,27 @@ class RecordController
         {
             this._Renderer.Redraw();
             let Data = this._Canvas.toDataURL();
-            let NewImage = new ImageObject(Data);
+            let NewImage = new ImageObject("Sprite"+(i+1),Data);
             this._Document.Images.push(NewImage);
             if(i < this._Framerate - 1) this._Animations.Tick(this._Framerate - 1);
         }
+        let Directions = ["Left","Right","Up","Down"];
         if(this._LightExposition)
         {
             for(let i = 0; i < 4; i++)
             {
                 this._Renderer.Light.SwitchLight(i+1);
                 this._Animations.ToggleReplay(false);
-                for(let i = 0; i < this._Framerate; i++)
+                for(let j = 0; j < this._Framerate; j++)
                 {
                     this._Renderer.Redraw();
                     let Data = this._Canvas.toDataURL();
-                    let NewImage = new ImageObject(Data);
+                    let NewImage = new ImageObject(Directions[i]+(j+1),Data);
                     this._Document.Exposition.push(NewImage);
-                    if(i < this._Framerate - 1) this._Animations.Tick(this._Framerate - 1);
+                    if(j < this._Framerate - 1) this._Animations.Tick(this._Framerate - 1);
                 }
             }
         }
         this._Renderer.Light.SwitchLight(0);
-        console.log(this._Document);
     }
 }

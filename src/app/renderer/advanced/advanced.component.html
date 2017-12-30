@@ -1,0 +1,9 @@
+<div class="main">
+    <p class="def title" (click) = "Toggle()">Advanced</p>
+    <div *ngIf="Toggled" class="def body row">
+        <div class="def col-md-12 row">
+            <label class="label col-md-12">Light Exposition</label>
+            <input type="checkbox" class="col-md-12 active-check" [(ngModel)]="Renderer.Recorder.LightExposition" />
+        </div>
+    </div>
+</div>
