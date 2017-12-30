@@ -42,7 +42,8 @@ export class PreviewComponent
             Items = this.Document.Images;
             for(let i in Items)
             {
-                Items[i].Name = this.Name + (i+1);
+                let Num = i+1;
+                Items[i].Name = this.Name + Num;
             }
         }
         if(this._ElectronService.isElectronApp)

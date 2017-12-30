@@ -11,6 +11,7 @@ import { ModelsComponent } from "./renderer/models/models.component";
 import { OptionsComponent } from "./renderer/options/options.component";
 import { AdvancedComponent } from "./renderer/advanced/advanced.component";
 import { ReplayComponent } from "./renderer/replay/replay.component";
+import { OutlineComponent } from "./renderer/outline/outline.component";
 import { TransformationsComponent } from "./renderer/transformations/transformations.component";
 
 import { RendererComponent } from "./renderer/renderer.component";
@@ -30,6 +31,7 @@ import { AppComponent } from './app.component';
     AdvancedComponent,
     ReplayComponent,
     TransformationsComponent,
+    OutlineComponent,
     RendererComponent,
     PreviewComponent,
     AppComponent,
