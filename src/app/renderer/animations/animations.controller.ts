@@ -88,7 +88,6 @@ class AnimationsController
     public Tick(Framerate:number) : void
     {
         let Value = this._Duration / Framerate;
-        console.log(Value);
         for(let i in this._Animations)
         {
             this._Animations[i].Update( Value );

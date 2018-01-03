@@ -18,7 +18,7 @@ export class OptionsComponent
         this._Toggled = true;
     }
     public ngOnInit() : void {}
-    public Record()
+    public Record() : void
     {
         this.Renderer.Recorder.Record();
     }

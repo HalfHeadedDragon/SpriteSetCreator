@@ -4,7 +4,7 @@
         <div *ngIf="Models" class="def col-md-12">
             <ul class="def types col-md-12">
                 <li class="item" [ngClass]="{'item-selected': Models.Selected == null}" (click)="Select(null)"> All </li>
-                <li *ngFor="let Model of ModelList" [ngClass]="{'item-selected': Models.Selected == Model}" class="item" (click)="Select(Model)">{{Model.name}}</li>
+                <li *ngFor="let Model of ModelList" [ngClass]="{'item-selected': Models.Selected == Model}" class="item" (click)="Select(Model)">{{Model.Mesh.name}}</li>
             </ul>
         </div>
     </div>

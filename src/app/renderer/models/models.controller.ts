@@ -1,6 +1,7 @@
 import { NgZone } from '@angular/core';
 import * as Three from 'three';
 
+import { Model } from "./model.model";
 import { AnimationsController } from "./../animations/animations.controller";
 
 export class ModelsController
@@ -9,17 +10,17 @@ export class ModelsController
     private _Callback:Function;
     private _Scene:Three.Scene;
     private _Loader:Three.JSONLoader;
-    private _Selected:Three.SkinnedMesh;
-    private _Models:Three.SkinnedMesh[];
+    private _Selected:Model;
+    private _Models:Model[];
     private _Animations:AnimationsController;
-    public get Models():Three.SkinnedMesh[] { return this._Models; }
-    public get Selected():Three.SkinnedMesh { return this._Selected; }
-    public get RotationX():number { return (this._Selected.rotation.x / Math.PI) * 180; }
-    public get RotationY():number { return (this._Selected.rotation.y / Math.PI) * 180; }
-    public get RotationZ():number { return (this._Selected.rotation.z / Math.PI) * 180; }
-    public set RotationX(value:number) { this._Selected.rotation.x = (value / 180) * Math.PI; }
-    public set RotationY(value:number) { this._Selected.rotation.y = (value / 180) * Math.PI; }
-    public set RotationZ(value:number) { this._Selected.rotation.z = (value / 180) * Math.PI; }
+    public get Models():Model[] { return this._Models; }
+    public get Selected():Model { return this._Selected; }
+    public get RotationX():number { return (this._Selected.Mesh.rotation.x / Math.PI) * 180; }
+    public get RotationY():number { return (this._Selected.Mesh.rotation.y / Math.PI) * 180; }
+    public get RotationZ():number { return (this._Selected.Mesh.rotation.z / Math.PI) * 180; }
+    public set RotationX(value:number) { this._Selected.Mesh.rotation.x = (value / 180) * Math.PI; }
+    public set RotationY(value:number) { this._Selected.Mesh.rotation.y = (value / 180) * Math.PI; }
+    public set RotationZ(value:number) { this._Selected.Mesh.rotation.z = (value / 180) * Math.PI; }
     public constructor(Scene:Three.Scene, Animations:AnimationsController)
     {
         this._Scene = Scene;
@@ -49,12 +50,13 @@ export class ModelsController
         Mesh.scale.set(100,100,100);
         Mesh.name = "Model " + (this._Models.length + 1);
         Mesh.visible = this._Selected == null;
-        this._Models.push(Mesh);
+        let NewModel = new Model(Mesh);
+        this._Models.push(NewModel);
         this._Animations.AddModel(Geometry, Mesh);
         this._Scene.add(Mesh);
         this._Callback();
     }
-    public Select(Model:Three.SkinnedMesh) : void
+    public Select(Model:Model) : void
     {
         if(Model != null && this._Models.indexOf(Model) == -1) return;
         this._Selected = Model;
@@ -64,12 +66,12 @@ export class ModelsController
     {
         if(this._Selected == null)
         {
-            for(let i in this._Models) this._Models[i].visible = true;
+            for(let i in this._Models) this._Models[i].Mesh.visible = true;
         }
         else
         {
-            for(let i in this._Models) this._Models[i].visible = false;
-            this._Selected.visible = true;
+            for(let i in this._Models) this._Models[i].Mesh.visible = false;
+            this._Selected.Mesh.visible = true;
         }
     }
 }
