@@ -62,8 +62,8 @@ class LightController
         }
         else
         {
-            this._Scene.remove(this._ExpositionLights[Index - 1]);
-            this._Scene.add(this._ExpositionLights[Index]);
+            this._Scene.remove(this._ExpositionLights[Index - 2]);
+            this._Scene.add(this._ExpositionLights[Index - 1]);
         }
     }
 }
