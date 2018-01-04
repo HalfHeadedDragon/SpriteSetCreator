@@ -1,8 +1,12 @@
 <div class="main">
     <p class="def title" (click) = "Toggle()">Outline</p>
-    <div *ngIf="Toggled" class="def body row">
-        <div *ngIf="Models && Models.Selected" class="def col-md-12">
-            
+    <div *ngIf="Toggled && Models && Models.Selected" class="def body row">
+        <a *ngIf="!Models.Selected.Outline" class="button-control col-md-12" (click)="CreateOutline()">Create</a>
+        <div *ngIf="Models.Selected.Outline" class="def col-md-12">
+            <label class="def label col-md-12">Color</label>
+            <input type="number" class="def input-3" [(ngModel)]="Models.Selected.OutlineColorR" />
+            <input type="number" class="def input-3" [(ngModel)]="Models.Selected.OutlineColorG" />
+            <input type="number" class="def input-3" [(ngModel)]="Models.Selected.OutlineColorB" />
         </div>
     </div>
 </div>

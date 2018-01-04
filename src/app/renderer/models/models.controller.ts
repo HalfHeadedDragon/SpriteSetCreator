@@ -15,12 +15,6 @@ export class ModelsController
     private _Animations:AnimationsController;
     public get Models():Model[] { return this._Models; }
     public get Selected():Model { return this._Selected; }
-    public get RotationX():number { return (this._Selected.Mesh.rotation.x / Math.PI) * 180; }
-    public get RotationY():number { return (this._Selected.Mesh.rotation.y / Math.PI) * 180; }
-    public get RotationZ():number { return (this._Selected.Mesh.rotation.z / Math.PI) * 180; }
-    public set RotationX(value:number) { this._Selected.Mesh.rotation.x = (value / 180) * Math.PI; }
-    public set RotationY(value:number) { this._Selected.Mesh.rotation.y = (value / 180) * Math.PI; }
-    public set RotationZ(value:number) { this._Selected.Mesh.rotation.z = (value / 180) * Math.PI; }
     public constructor(Scene:Three.Scene, Animations:AnimationsController)
     {
         this._Scene = Scene;
@@ -50,11 +44,16 @@ export class ModelsController
         Mesh.scale.set(100,100,100);
         Mesh.name = "Model " + (this._Models.length + 1);
         Mesh.visible = this._Selected == null;
-        let NewModel = new Model(Mesh);
+        let NewModel = new Model(this._Scene, Mesh, Geometry);
         this._Models.push(NewModel);
         this._Animations.AddModel(Geometry, Mesh);
         this._Scene.add(Mesh);
         this._Callback();
+    }
+    public CreateOutline() : void
+    {
+        this._Selected.CreateOutline();
+        this._Animations.AddModel(this._Selected.Geometry, this._Selected.OutlineMesh);
     }
     public Select(Model:Model) : void
     {

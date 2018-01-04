@@ -9,9 +9,9 @@
         </div>
         <div *ngIf="Models.Selected" class="def col-md-12">
             <label class="def label col-md-12">Rotation</label>
-            <input type="number" class="def input-3" [(ngModel)]="Models.RotationX" />
-            <input type="number" class="def input-3" [(ngModel)]="Models.RotationY" />
-            <input type="number" class="def input-3" [(ngModel)]="Models.RotationZ"/>
+            <input type="number" class="def input-3" [(ngModel)]="Models.Selected.RotationX" />
+            <input type="number" class="def input-3" [(ngModel)]="Models.Selected.RotationY" />
+            <input type="number" class="def input-3" [(ngModel)]="Models.Selected.RotationZ"/>
         </div>
         <div *ngIf="Models.Selected" class="def col-md-12">
             <label class="def label col-md-12">Scale</label>

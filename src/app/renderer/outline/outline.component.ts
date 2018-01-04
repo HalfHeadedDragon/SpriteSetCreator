@@ -16,11 +16,15 @@ export class OutlineComponent
     public ModelList:any[];
     public constructor(private _Zone:NgZone)
     {
-        this._Toggled = true;
+        this._Toggled = false;
     }
     public ngOnInit() : void {}
     public Toggle() : void
     {
         this._Toggled = !this._Toggled;
+    }
+    public CreateOutline() : void
+    {
+        this.Models.CreateOutline();
     }
 }
