@@ -274,6 +274,8 @@ export class OutlineShaders
                 transformedNormal = - transformedNormal;
             
             #endif
+
+
         
             vec3 transformed = vec3( position );
             #ifdef USE_MORPHTARGETS
@@ -293,8 +295,10 @@ export class OutlineShaders
                 #endif
             
             #endif
+
+            vec3 movePosition = vec3(position.x + normal.x * factor, position.y + normal.y * factor, position.z + normal.z * factor);
             
-            vec4 skinVertex = bindMatrix * vec4( transformed, 1.0 );
+            vec4 skinVertex = bindMatrix * vec4( movePosition, 1.0 );
             
             vec4 skinned = vec4( 0.0 );
             skinned += boneMatX * skinVertex * skinWeight.x;
@@ -306,62 +310,13 @@ export class OutlineShaders
 
             vec4 mvPosition = modelViewMatrix * vec4( transformed, 1.0 );
             
-            gl_Position = projectionMatrix * mvPosition;
-            #ifdef USE_LOGDEPTHBUF
-            
-                #ifdef USE_LOGDEPTHBUF_EXT
-            
-                    vFragDepth = 1.0 + gl_Position.w;
-            
-                #else
-            
-                    gl_Position.z = log2( max( EPSILON, gl_Position.w + 1.0 ) ) * logDepthBufFC - 1.0;
-            
-                    gl_Position.z *= gl_Position.w;
-            
-                #endif
-            
-            #endif
-        
-            #if defined( USE_ENVMAP ) || defined( DISTANCE ) || defined ( USE_SHADOWMAP )
-            
-                vec4 worldPosition = modelMatrix * vec4( transformed, 1.0 );
-            
-            #endif
+            vec4 cPosition = projectionMatrix * mvPosition;
             
             #if NUM_CLIPPING_PLANES > 0 && ! defined( PHYSICAL ) && ! defined( PHONG )
                 vViewPosition = - mvPosition.xyz;
             #endif
-        
-            #ifdef USE_ENVMAP
             
-                #if defined( USE_BUMPMAP ) || defined( USE_NORMALMAP ) || defined( PHONG )
-            
-                    vWorldPosition = worldPosition.xyz;
-            
-                #else
-            
-                    vec3 cameraToVertex = normalize( worldPosition.xyz - cameraPosition );
-            
-                    vec3 worldNormal = inverseTransformDirection( transformedNormal, viewMatrix );
-            
-                    #ifdef ENVMAP_MODE_REFLECTION
-            
-                        vReflect = reflect( cameraToVertex, worldNormal );
-            
-                    #else
-            
-                        vReflect = refract( cameraToVertex, worldNormal, refractionRatio );
-            
-                    #endif
-            
-                #endif
-            
-            #endif
-
-            vec3 movePosition = vec3(position.x + normal.x * factor, position.y + normal.y * factor, position.z + normal.z * factor);
-            vec4 calcPosition = projectionMatrix * modelViewMatrix * vec4( movePosition, 1.0 );
-            gl_Position = calcPosition;
+            gl_Position = cPosition;
 
             #ifdef USE_FOG
             fogDepth = -mvPosition.z;
