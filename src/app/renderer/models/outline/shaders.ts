@@ -87,15 +87,6 @@ export class OutlineShaders
             return tmp;
         
         }
-        
-        // https://en.wikipedia.org/wiki/Relative_luminance
-        float linearToRelativeLuminance( const in vec3 color ) {
-        
-            vec3 weights = vec3( 0.2126, 0.7152, 0.0722 );
-        
-            return dot( weights, color.rgb );
-        
-        }
 
         uniform float factor;
 
@@ -106,50 +97,9 @@ export class OutlineShaders
         
         #endif
 
-        #if defined( USE_LIGHTMAP ) || defined( USE_AOMAP )
-        
-            attribute vec2 uv2;
-            varying vec2 vUv2;
-        
-        #endif
-
-        #ifdef USE_ENVMAP
-        
-            #if defined( USE_BUMPMAP ) || defined( USE_NORMALMAP ) || defined( PHONG )
-                varying vec3 vWorldPosition;
-        
-            #else
-        
-                varying vec3 vReflect;
-                uniform float refractionRatio;
-        
-            #endif
-        
-        #endif
-
         #ifdef USE_COLOR
         
             varying vec3 vColor;
-        
-        #endif
-
-        #ifdef USE_FOG
-        
-          varying float fogDepth;
-        
-        #endif
-
-        #ifdef USE_MORPHTARGETS
-        
-            #ifndef USE_MORPHNORMALS
-        
-            uniform float morphTargetInfluences[ 8 ];
-        
-            #else
-        
-            uniform float morphTargetInfluences[ 4 ];
-        
-            #endif
         
         #endif
 
@@ -200,18 +150,6 @@ export class OutlineShaders
         
         #endif
 
-        #ifdef USE_LOGDEPTHBUF
-        
-            #ifdef USE_LOGDEPTHBUF_EXT
-        
-                varying float vFragDepth;
-        
-            #endif
-        
-            uniform float logDepthBufFC;
-        
-        #endif
-
         #if NUM_CLIPPING_PLANES > 0 && ! defined( PHYSICAL ) && ! defined( PHONG )
             varying vec3 vViewPosition;
         #endif
@@ -246,14 +184,7 @@ export class OutlineShaders
             #endif
         
             vec3 objectNormal = vec3( normal );
-            #ifdef USE_MORPHNORMALS
-            
-                objectNormal += ( morphNormal0 - normal ) * morphTargetInfluences[ 0 ];
-                objectNormal += ( morphNormal1 - normal ) * morphTargetInfluences[ 1 ];
-                objectNormal += ( morphNormal2 - normal ) * morphTargetInfluences[ 2 ];
-                objectNormal += ( morphNormal3 - normal ) * morphTargetInfluences[ 3 ];
-            
-            #endif
+
             #ifdef USE_SKINNING
             
                 mat4 skinMatrix = mat4( 0.0 );
@@ -275,26 +206,7 @@ export class OutlineShaders
             
             #endif
 
-
-        
-            vec3 transformed = vec3( position );
-            #ifdef USE_MORPHTARGETS
-            
-                transformed += ( morphTarget0 - position ) * morphTargetInfluences[ 0 ];
-                transformed += ( morphTarget1 - position ) * morphTargetInfluences[ 1 ];
-                transformed += ( morphTarget2 - position ) * morphTargetInfluences[ 2 ];
-                transformed += ( morphTarget3 - position ) * morphTargetInfluences[ 3 ];
-            
-                #ifndef USE_MORPHNORMALS
-            
-                transformed += ( morphTarget4 - position ) * morphTargetInfluences[ 4 ];
-                transformed += ( morphTarget5 - position ) * morphTargetInfluences[ 5 ];
-                transformed += ( morphTarget6 - position ) * morphTargetInfluences[ 6 ];
-                transformed += ( morphTarget7 - position ) * morphTargetInfluences[ 7 ];
-            
-                #endif
-            
-            #endif
+            vec3 transformed = vec3( position ); 
 
             vec3 movePosition = vec3(position.x + normal.x * factor, position.y + normal.y * factor, position.z + normal.z * factor);
             
@@ -315,13 +227,8 @@ export class OutlineShaders
             #if NUM_CLIPPING_PLANES > 0 && ! defined( PHYSICAL ) && ! defined( PHONG )
                 vViewPosition = - mvPosition.xyz;
             #endif
-            
-            gl_Position = cPosition;
 
-            #ifdef USE_FOG
-            fogDepth = -mvPosition.z;
-            #endif
-        
+            gl_Position = cPosition;
         }
         `;
     public static VertexTest : string = `

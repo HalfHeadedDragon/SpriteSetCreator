@@ -54,6 +54,8 @@ export class ModelsController
     {
         this._Selected.CreateOutline();
         this._Animations.AddModel(this._Selected.Geometry, this._Selected.OutlineMesh);
+        this._Animations.ToggleReplay(false);
+        this._Animations.ToggleReplay(true);
     }
     public Select(Model:Model) : void
     {

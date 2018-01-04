@@ -42,6 +42,14 @@
 {
     background-color: #444444;
 }
+.input-1
+{
+    width:99%;
+    height:18px;
+    border-width: 0px;
+    background-color:#181818;
+    color:white;
+}
 .input-3
 {
     width:32%;
