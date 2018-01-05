@@ -10,6 +10,7 @@ export class ModelsController
     private _Callback:Function;
     private _Scene:Three.Scene;
     private _Loader:Three.JSONLoader;
+    private _TextureLoader:Three.TextureLoader;
     private _Selected:Model;
     private _Models:Model[];
     private _Animations:AnimationsController;
@@ -36,11 +37,18 @@ export class ModelsController
         if(this._Loader == null) this._Loader = new Three.JSONLoader();
         this._Loader.load(Path, this.LoadModelHandler.bind(this));
     }
+    public LoadTexture(Path:string)
+    {
+        if(!this._Selected) return;
+        if(this._TextureLoader == null) this._TextureLoader = new Three.TextureLoader();
+        this._TextureLoader.load(Path, this.LoadTextureHandler.bind(this));
+    }
     private LoadModelHandler(Geometry, Materials) { this._Zone.run(function() { this.LoadModelCallback(Geometry, Materials) }.bind(this));}
+    private LoadTextureHandler(Texture) { this._Zone.run(function() { this.LoadTextureCallback(Texture) }.bind(this));}
     private LoadModelCallback(Geometry, Materials) : void
     {
         this._Animations.PrepareGeometry(Geometry);
-        let Mesh = new Three.SkinnedMesh( Geometry, new Three.MeshLambertMaterial( { color: 0xdddddd, skinning: true }));
+        let Mesh = new Three.SkinnedMesh( Geometry, new Three.MeshPhongMaterial( { color: 0xdddddd, skinning: true }));
         Mesh.scale.set(100,100,100);
         Mesh.name = "Model " + (this._Models.length + 1);
         Mesh.visible = this._Selected == null;
@@ -49,6 +57,11 @@ export class ModelsController
         this._Animations.AddModel(Geometry, Mesh);
         this._Scene.add(Mesh);
         this._Callback();
+    }
+    private LoadTextureCallback(Texture) : void
+    {
+        console.log("!");
+        this._Selected.Mesh.material = new Three.MeshPhongMaterial( { color: 0xdddddd, skinning: true, map:Texture })
     }
     public CreateOutline() : void
     {

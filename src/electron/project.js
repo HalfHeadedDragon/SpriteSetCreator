@@ -1,4 +1,5 @@
 'use strict';
+var child = require('child_process').execFile;
 
 const { app, Menu, MenuItem, dialog, ipcMain } = require('electron');
 
@@ -16,6 +17,8 @@ class ProjectIO
     {
         this._Window.MainMenu.CreateModelMenu([this.ImportModel.bind(this)]);
         ipcMain.on("export-images", this.ExportImages.bind(this));
+        ipcMain.on("run-normal-map-generator", this.RunNormalMapGenerator.bind(this));
+        ipcMain.on("texture-load-init", this.TextureLoad.bind(this));
     }
     ImportModel()
     {
@@ -38,6 +41,19 @@ class ProjectIO
         {
             this._FS.WriteImage(filenames[0]+"/"+this._Images[i]._Name + ".png", this._Images[i]._DataUrl);
         }
+    }
+    RunNormalMapGenerator()
+    {
+        child("dist/assets/NormalMap2DGenerator.exe");
+    }
+    TextureLoad()
+    {
+        dialog.showOpenDialog({properties:["openFile"], filter:{extensions:["png","jpg","jpeg"]}, title:"Open your texture file.", defaultPath:app.getAppPath("desktop"), buttonLabel:"Open"}, this.TextureLoadCallback.bind(this));
+    }
+    TextureLoadCallback(filenames)
+    {
+        if(!filenames || filenames.length == 0) return;
+        this._Window.Window.webContents.send('texture-load' , filenames[0]);
     }
 }
 

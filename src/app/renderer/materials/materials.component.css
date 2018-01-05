@@ -30,6 +30,14 @@
     text-align: center;
     margin-top:7px;
 }
+.input-1
+{
+    width:99%;
+    height:18px;
+    border-width: 0px;
+    background-color:#181818;
+    color:white;
+}
 .input-3
 {
     width:32%;
@@ -37,4 +45,17 @@
     border-width: 0px;
     background-color:#181818;
     color:white;
+}
+.button-control
+{
+    color:white;
+    background-color: #333333;
+    height:22px;
+    font-size:12px;
+    text-align: center;
+    cursor:pointer;
+}
+.button-control:hover
+{
+    background-color: #444444;
 }

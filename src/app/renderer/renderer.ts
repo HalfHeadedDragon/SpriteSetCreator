@@ -35,6 +35,7 @@ class Renderer
         this._Resolution = Resolution;
         this._Document = Document;
         this._Document.OnModelImport.push(this.LoadModel.bind(this));
+        this._Document.OnTextureImport.push(this.LoadTexture.bind(this));
         this.Init(Resolution);
     }
     public Init(Resolution:any) : void
@@ -82,5 +83,9 @@ class Renderer
     private LoadModel(Path:string):void
     {
         this._Models.LoadModel(Path);
+    }
+    private LoadTexture(Path:string):void
+    {
+        this._Models.LoadTexture(Path);
     }
 }

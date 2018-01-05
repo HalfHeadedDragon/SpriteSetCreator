@@ -27,12 +27,18 @@ export class AppComponent
     if(this._ElectronService.isElectronApp)
     {
         this._ElectronService.ipcRenderer.on('model-load' , this.ImportModelHandler.bind(this));
+        this._ElectronService.ipcRenderer.on('texture-load' , this.ImportTextureHandler.bind(this));
     }
   }
   private ImportModelHandler(Event, Data) { this._Zone.run(function() { this.ImportModel(Data) }.bind(this));}
+  private ImportTextureHandler(Event, Data) { this._Zone.run(function() { this.ImportTexture(Data) }.bind(this));}
   private ImportModel(Path)
   {
     this.Document.ImportModel(Path);
+  }
+  private ImportTexture(Path)
+  {
+    this.Document.ImportTexture(Path);
   }
   private SelectOption(Option:number) : void
   {

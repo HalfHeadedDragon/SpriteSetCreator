@@ -58,12 +58,3 @@
 {
     background-color: #444444;
 }
-.button-record
-{
-    background-color: #FF3333 !important;
-    margin-bottom: 5px;
-}
-.button-record:hover
-{
-    background-color: #FF1111 !important;
-}
