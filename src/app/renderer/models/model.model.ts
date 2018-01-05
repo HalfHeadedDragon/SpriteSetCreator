@@ -5,6 +5,7 @@ import { OutlineShaders } from "./outline/shaders";
 
 class Model
 {
+    private _Toon:boolean;
     private _Outline:boolean;
     private _Mesh:Three.SkinnedMesh;
     private _OutlineMesh:Three.SkinnedMesh;
@@ -15,6 +16,7 @@ class Model
     public get Mesh():Three.SkinnedMesh { return this._Mesh; }
     public set Mesh(value:Three.SkinnedMesh) { this._Mesh = value; }
     public get Outline():boolean { return this._Outline; }
+    public get Toon():boolean { return this._Toon; }
     public get OutlineMesh():Three.SkinnedMesh { return this._OutlineMesh; }
     public get Geometry():Three.Geometry { return this._Geometry; }
     public get RotationX():number { return (this._Mesh.rotation.x / Math.PI) * 180; }
@@ -46,6 +48,7 @@ class Model
     public constructor(Scene:Three.Scene, Mesh:Three.SkinnedMesh, Geometry:Three.Geometry)
     {
         this._Outline = false;
+        this._Toon = false;
         this._Scene = Scene;
         this._Mesh = Mesh;
         this._Geometry = Geometry;
@@ -72,14 +75,37 @@ class Model
         this._OutlineMesh.material.side = Three.BackSide;
         this._Scene.add(this._OutlineMesh);
     }
-    private UpdateOutlineColor()
+    private UpdateOutlineColor() : void
     {
         let ColorArray = this._OutlineColor.toArray();
         ColorArray.push(1.0);
         this._OutlineMesh.material['uniforms'].color.value = ColorArray;
     }
-    private UpdateOutlineFactor()
+    private UpdateOutlineFactor() : void
     {
         this._OutlineMesh.material['uniforms'].factor.value = this._OutlineWidth;
+    }
+    public LoadTexture(Texture:any) : void
+    {
+        if(!this._Toon)
+        {
+            this.Mesh.material = new Three.MeshPhongMaterial( { color: 0xdddddd, skinning: true, map:Texture });
+        }
+        else
+        {
+            this.Mesh.material = new Three.MeshToonMaterial( { color: 0xdddddd, skinning: true, map:Texture, shinines:0 });
+        }
+    }
+    public ToggleToon() : void
+    {
+        this._Toon = !this._Toon;
+        if(!this._Toon)
+        {
+            this.Mesh.material = new Three.MeshPhongMaterial( { color: 0xdddddd, skinning: true });
+        }
+        else
+        {
+            this.Mesh.material = new Three.MeshToonMaterial( { color: 0xdddddd, skinning: true, shinines:0 });
+        }
     }
 }

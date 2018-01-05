@@ -60,8 +60,11 @@ export class ModelsController
     }
     private LoadTextureCallback(Texture) : void
     {
-        console.log("!");
-        this._Selected.Mesh.material = new Three.MeshPhongMaterial( { color: 0xdddddd, skinning: true, map:Texture })
+        this._Selected.LoadTexture(Texture);
+    }
+    public ToggleToon()
+    {
+        this._Selected.ToggleToon();
     }
     public CreateOutline() : void
     {

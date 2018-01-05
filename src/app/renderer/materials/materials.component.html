@@ -16,5 +16,7 @@
             <input type="number" class="def input-3" [(ngModel)]="Models.Selected.Mesh.material.specular.b" />
         </div>
         <a *ngIf="Models && Models.Selected" class="button-control col-md-12" style="margin-top:5px;" (click)="TextureLoad()">TextureLoad</a>
+        <a *ngIf="Models && Models.Selected && !Models.Selected.Toon" class="button-control col-md-12" style="margin-top:5px;" (click)="ToggleToon()">Enable Toon</a>
+        <a *ngIf="Models && Models.Selected && Models.Selected.Toon" class="button-control col-md-12" style="margin-top:5px;" (click)="ToggleToon()">Disable Toon</a>
     </div>
 </div>

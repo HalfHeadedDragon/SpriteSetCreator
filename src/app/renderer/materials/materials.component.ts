@@ -30,4 +30,8 @@ export class MaterialsComponent
             this._ElectronService.ipcRenderer.send("texture-load-init");
         }
     }
+    public ToggleToon() : void
+    {
+        this.Models.ToggleToon();
+    }
 }
