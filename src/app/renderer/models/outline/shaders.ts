@@ -231,15 +231,6 @@ export class OutlineShaders
             gl_Position = cPosition;
         }
         `;
-    public static VertexTest : string = `
-        uniform float factor;
-        void main()
-        {
-            vec3 movePosition = vec3(position.x + normal.x * factor, position.y + normal.y * factor, position.z + normal.z * factor);
-            vec4 calcPosition = projectionMatrix * modelViewMatrix * vec4( movePosition, 1.0 );
-            gl_Position = calcPosition;
-        }
-        `;
     public static Fragment : string = `
         uniform vec4 color;
         varying vec2 vUv;

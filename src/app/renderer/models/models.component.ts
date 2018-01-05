@@ -24,11 +24,11 @@ export class ModelsComponent
         this.Models.AddZone(this._Zone, this.Refresh.bind(this));
         this.Refresh();
     }
-    private Refresh()
+    private Refresh() : void
     {
         this.ModelList = this.Models.Models;
     }
-    public Select(Value:any)
+    public Select(Value:any) : void
     {
         this.Models.Select(Value);
     }

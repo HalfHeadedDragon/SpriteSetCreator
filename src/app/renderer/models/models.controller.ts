@@ -60,7 +60,7 @@ export class ModelsController
     }
     private LoadTextureCallback(Texture) : void
     {
-        this._Selected.LoadTexture(Texture);
+        this._Selected.LoadMaterial(Texture);
     }
     public ToggleToon()
     {

@@ -6,6 +6,7 @@ import { OutlineShaders } from "./outline/shaders";
 class Model
 {
     private _Toon:boolean;
+    private _Texture:any;
     private _Outline:boolean;
     private _Mesh:Three.SkinnedMesh;
     private _OutlineMesh:Three.SkinnedMesh;
@@ -85,27 +86,23 @@ class Model
     {
         this._OutlineMesh.material['uniforms'].factor.value = this._OutlineWidth;
     }
-    public LoadTexture(Texture:any) : void
+    public LoadMaterial(Texture:any) : void
     {
+        this._Texture = Texture;
         if(!this._Toon)
         {
-            this.Mesh.material = new Three.MeshPhongMaterial( { color: 0xdddddd, skinning: true, map:Texture });
+            if(!Texture) this.Mesh.material = new Three.MeshPhongMaterial( { color: this.Mesh.material["color"], shininess:this.Mesh.material["shininess"], specular:this.Mesh.material["specular"], skinning: true });
+            else this.Mesh.material = new Three.MeshPhongMaterial( { color: this.Mesh.material["color"], shininess:this.Mesh.material["shininess"], specular:this.Mesh.material["specular"], skinning: true, map:Texture });
         }
         else
         {
-            this.Mesh.material = new Three.MeshToonMaterial( { color: 0xdddddd, skinning: true, map:Texture, shinines:0 });
+            if(!Texture) this.Mesh.material = new Three.MeshToonMaterial( { color: this.Mesh.material["color"], shininess:this.Mesh.material["shininess"], specular:this.Mesh.material["specular"], skinning: true });
+            else this.Mesh.material = new Three.MeshToonMaterial( { color: this.Mesh.material["color"], shininess:this.Mesh.material["shininess"], specular:this.Mesh.material["specular"], skinning: true, map:Texture });
         }
     }
     public ToggleToon() : void
     {
         this._Toon = !this._Toon;
-        if(!this._Toon)
-        {
-            this.Mesh.material = new Three.MeshPhongMaterial( { color: 0xdddddd, skinning: true });
-        }
-        else
-        {
-            this.Mesh.material = new Three.MeshToonMaterial( { color: 0xdddddd, skinning: true, shinines:0 });
-        }
+        this.LoadMaterial(this._Texture);
     }
 }
