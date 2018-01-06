@@ -9,7 +9,7 @@
             <advanced [Renderer]="Renderer"></advanced>
         </div>
         <div id="canvas-parent" class="def canvas-parent">
-            <canvas id="canvas"></canvas>
+            <canvas id="canvas" (mousedown)="MouseDown($event)" (mouseup)="MouseUp($event)" (mousemove)="MouseMove($event)"></canvas>
         </div>
         <div class="def right-sidebar">
             <models [Models]="Renderer.Models"></models>
