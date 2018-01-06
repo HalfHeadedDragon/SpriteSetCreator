@@ -10,5 +10,6 @@
             <label class="label col-md-12">Width</label>
             <input type="number" class="input-1" [(ngModel)]="Models.Selected.OutlineWidth" />
         </div>
+        <a *ngIf="Models.Selected.Outline" class="button-control col-md-12" style="margin-top:5px;" (click)="RemoveOutline()">Remove</a>
     </div>
 </div>

@@ -77,6 +77,11 @@ class Model
         this._OutlineMesh.material.side = Three.BackSide;
         this._Scene.add(this._OutlineMesh);
     }
+    public RemoveOutline() : void
+    {
+        this._Outline = false;
+        this._Scene.remove(this._OutlineMesh);
+    }
     private UpdateOutlineColor() : void
     {
         let ColorArray = this._OutlineColor.toArray();

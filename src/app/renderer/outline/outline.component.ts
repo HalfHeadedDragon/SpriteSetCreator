@@ -27,4 +27,8 @@ export class OutlineComponent
     {
         this.Models.CreateOutline();
     }
+    public RemoveOutline() : void
+    {
+        this.Models.RemoveOutline();
+    }
 }

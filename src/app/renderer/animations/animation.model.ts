@@ -7,6 +7,7 @@ class AnimationModel
     private _Clips:Three.AnimationClip[];
     private _Animations:any[];
     private _Mixer:Three.AnimationMixer;
+    private _Mesh:Three.Mesh;
     public get Actions():number { return this._Animations.length; }
     public constructor(Geometry:any, Mesh:Three.Mesh)
     {
@@ -26,6 +27,10 @@ class AnimationModel
             this._Clips.push(Clip);
             this._Animations.push(Anim);
         }
+    }
+    public CheckMesh(Mesh:Three.Mesh) : boolean
+    {
+        return this._Mesh == Mesh;
     }
     public Update(Delta:number) : void
     {

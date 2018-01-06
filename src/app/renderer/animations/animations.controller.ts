@@ -46,6 +46,17 @@ class AnimationsController
         Animation.UpdateWeights(this._Weights);
         this._Animations.push(Animation);
     }
+    public RemoveModel(Mesh:Three.Mesh)
+    {
+        for(let i = 0; i < this._Animations.length; i++)
+        {
+            if(this._Animations[i].CheckMesh(Mesh))
+            {
+                this._Animations.splice(i, 1);
+                break;
+            }
+        }
+    }
     public PrepareGeometry(Geometry:any) : void
     {
         for(let i in Geometry.animations)

@@ -73,6 +73,11 @@ export class ModelsController
         this._Animations.ToggleReplay(false);
         this._Animations.ToggleReplay(true);
     }
+    public RemoveOutline() : void
+    {
+        this._Animations.RemoveModel(this._Selected.OutlineMesh);
+        this._Selected.RemoveOutline();
+    }
     public Select(Model:Model) : void
     {
         if(Model != null && this._Models.indexOf(Model) == -1) return;
