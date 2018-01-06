@@ -14,6 +14,7 @@ class Model
     private _Geometry:Three.Geometry;
     private _OutlineWidth:number;
     private _OutlineColor:Three.Color;
+    private _Material:any;
     public get Mesh():Three.SkinnedMesh { return this._Mesh; }
     public set Mesh(value:Three.SkinnedMesh) { this._Mesh = value; }
     public get Outline():boolean { return this._Outline; }
@@ -99,6 +100,16 @@ class Model
             if(!Texture) this.Mesh.material = new Three.MeshToonMaterial( { color: this.Mesh.material["color"], shininess:this.Mesh.material["shininess"], specular:this.Mesh.material["specular"], skinning: true });
             else this.Mesh.material = new Three.MeshToonMaterial( { color: this.Mesh.material["color"], shininess:this.Mesh.material["shininess"], specular:this.Mesh.material["specular"], skinning: true, map:Texture });
         }
+    }
+    public ActivateExposition() : void
+    {
+        this._Material = this.Mesh.material;
+        if(!this._Toon) this.Mesh.material = new Three.MeshPhongMaterial( { color: 0xFFFFFF, shininess:this.Mesh.material["shininess"], specular:this.Mesh.material["specular"], skinning: true });
+        else this.Mesh.material = new Three.MeshToonMaterial( { color: 0xFFFFFF, shininess:this.Mesh.material["shininess"], specular:this.Mesh.material["specular"], skinning: true });
+    }
+    public DeactivateExposition() : void
+    {
+        this.Mesh.material = this._Material;
     }
     public ToggleToon() : void
     {

@@ -91,4 +91,12 @@ export class ModelsController
             this._Selected.Mesh.visible = true;
         }
     }
+    public ActivateExposition() : void
+    {
+        this._Selected.ActivateExposition();
+    }
+    public DeactivateExposition() : void
+    {
+        this._Selected.DeactivateExposition();
+    }
 }

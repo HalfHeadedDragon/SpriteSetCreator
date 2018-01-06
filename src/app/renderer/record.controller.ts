@@ -40,6 +40,7 @@ class RecordController
             this._Document.Images.push(NewImage);
         }
         let Directions = ["Right","Left","Up","Down"];
+        this._Renderer.Models.ActivateExposition();
         if(this._LightExposition)
         {
             for(let i = 0; i < 4; i++)
@@ -57,5 +58,6 @@ class RecordController
             }
         }
         this._Renderer.Light.SwitchLight(0);
+        this._Renderer.Models.DeactivateExposition();
     }
 }
