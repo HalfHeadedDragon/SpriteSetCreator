@@ -48,6 +48,8 @@
             this.Export = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.progress = new System.Windows.Forms.ProgressBar();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.Toon = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.leftLight)).BeginInit();
             this.panel2.SuspendLayout();
@@ -58,6 +60,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bottomLight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.generatedPreview)).BeginInit();
             this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -198,7 +201,7 @@
             this.generatedPreview.Dock = System.Windows.Forms.DockStyle.Top;
             this.generatedPreview.Location = new System.Drawing.Point(600, 0);
             this.generatedPreview.Name = "generatedPreview";
-            this.generatedPreview.Size = new System.Drawing.Size(300, 300);
+            this.generatedPreview.Size = new System.Drawing.Size(300, 319);
             this.generatedPreview.TabIndex = 4;
             this.generatedPreview.TabStop = false;
             // 
@@ -235,9 +238,9 @@
             this.generatedList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.generatedList.ForeColor = System.Drawing.Color.White;
             this.generatedList.FormattingEnabled = true;
-            this.generatedList.Location = new System.Drawing.Point(600, 325);
+            this.generatedList.Location = new System.Drawing.Point(600, 369);
             this.generatedList.Name = "generatedList";
-            this.generatedList.Size = new System.Drawing.Size(300, 225);
+            this.generatedList.Size = new System.Drawing.Size(300, 181);
             this.generatedList.TabIndex = 7;
             // 
             // Export
@@ -259,7 +262,7 @@
             this.panel5.Controls.Add(this.Import);
             this.panel5.Controls.Add(this.Generate);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(600, 300);
+            this.panel5.Location = new System.Drawing.Point(600, 344);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(300, 25);
             this.panel5.TabIndex = 9;
@@ -273,6 +276,27 @@
             this.progress.TabIndex = 10;
             this.progress.Visible = false;
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.Toon);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(600, 319);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(300, 25);
+            this.panel6.TabIndex = 11;
+            // 
+            // Toon
+            // 
+            this.Toon.AutoSize = true;
+            this.Toon.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Toon.Location = new System.Drawing.Point(0, 0);
+            this.Toon.Name = "Toon";
+            this.Toon.Size = new System.Drawing.Size(51, 25);
+            this.Toon.TabIndex = 0;
+            this.Toon.Text = "Toon";
+            this.Toon.UseVisualStyleBackColor = true;
+            this.Toon.CheckedChanged += new System.EventHandler(this.Toon_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -281,6 +305,7 @@
             this.ClientSize = new System.Drawing.Size(900, 555);
             this.Controls.Add(this.generatedList);
             this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.generatedPreview);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -303,6 +328,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bottomLight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.generatedPreview)).EndInit();
             this.panel5.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -328,6 +355,8 @@
         private System.Windows.Forms.Button Export;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.ProgressBar progress;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.CheckBox Toon;
     }
 }
 

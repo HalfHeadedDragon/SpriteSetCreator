@@ -45,5 +45,10 @@ namespace NormalMap2DGenerator
                 this.Gen.Export(Dialog.SelectedPath);
             }
         }
+
+        private void Toon_CheckedChanged(object sender, EventArgs e)
+        {
+            this.Gen.ToggleToon(Toon.Checked);
+        }
     }
 }
