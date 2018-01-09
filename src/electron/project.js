@@ -20,6 +20,7 @@ class ProjectIO
         ipcMain.on("run-normal-map-generator", this.RunNormalMapGenerator.bind(this));
         ipcMain.on("model-load-init", this.ImportModel.bind(this));
         ipcMain.on("texture-load-init", this.TextureLoad.bind(this));
+        ipcMain.on("show-message", this.ShowMessage.bind(this));
     }
     ImportModel()
     {
@@ -55,6 +56,10 @@ class ProjectIO
     {
         if(!filenames || filenames.length == 0) return;
         this._Window.Window.webContents.send('texture-load' , filenames[0]);
+    }
+    ShowMessage(Event, Title, Message)
+    {
+        dialog.showMessageBox(this._Window.Window, {title:Title, message:Message});
     }
 }
 

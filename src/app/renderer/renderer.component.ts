@@ -17,7 +17,7 @@ export class RendererComponent
     private _MouseDown:boolean;
     private _Renderer:Renderer;
     public get Renderer():Renderer { return this._Renderer; }
-    public constructor() 
+    public constructor(private _ElectronService: ElectronService) 
     {
         this._MouseDown = false;
     }
@@ -31,6 +31,7 @@ export class RendererComponent
         else
         {
             this._Renderer = new Renderer({X:512, Y:512}, this.Document);
+            this._Renderer.BindElectron(this._ElectronService);
             this.Document.Data = this._Renderer;
         }
     }

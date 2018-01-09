@@ -11,6 +11,7 @@ import { RecordController } from "./record.controller";
 
 class Renderer
 {
+    private _Electron:any;
     private _Scene:Three.Scene;
     private _Target:HTMLCanvasElement;
     private _Resolution:any;
@@ -31,6 +32,7 @@ class Renderer
     public get Animations():AnimationsController { return this._Animations; }
     public get Recorder():RecordController { return this._Recorder; }
     public get Canvas():HTMLCanvasElement { return this._Target; }
+    public get Electron():any { return this._Electron; }
     public constructor(Resolution:any, Document:Document)
     {
         this._Resolution = Resolution;
@@ -88,5 +90,9 @@ class Renderer
     private LoadTexture(Path:string):void
     {
         this._Models.LoadTexture(Path);
+    }
+    public BindElectron(Electron:any)
+    {
+        this._Electron = Electron;
     }
 }

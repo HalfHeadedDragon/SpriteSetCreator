@@ -60,5 +60,9 @@ class RecordController
         }
         this._Renderer.Light.SwitchLight(0);
         this._Renderer.Models.DeactivateExposition();
+        if(this._Renderer.Electron.isElectronApp)
+        {
+            this._Renderer.Electron.ipcRenderer.send("show-message", "Record Finished", "Recording at " + this._Framerate + " FPS has finished.");
+        }
     }
 }
