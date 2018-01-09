@@ -40,9 +40,9 @@ export class PreviewComponent
         else
         {
             Items = this.Document.Images;
-            for(let i in Items)
+            for(let i = 0; i < Items.length; i++)
             {
-                let Num = i+1;
+                let Num:number = i+1;
                 Items[i].Name = this.Name + Num;
             }
         }
