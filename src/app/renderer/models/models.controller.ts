@@ -98,10 +98,24 @@ export class ModelsController
     }
     public ActivateExposition() : void
     {
-        this._Selected.ActivateExposition();
+        if(this._Selected)
+        {
+            this._Selected.ActivateExposition();
+        }
+        else
+        {
+            for(let i in this._Models) this._Models[i].ActivateExposition();
+        }
     }
     public DeactivateExposition() : void
     {
-        this._Selected.DeactivateExposition();
+        if(this._Selected)
+        {
+            this._Selected.DeactivateExposition();
+        }
+        else
+        {
+            for(let i in this._Models) this._Models[i].DeactivateExposition();
+        }
     }
 }

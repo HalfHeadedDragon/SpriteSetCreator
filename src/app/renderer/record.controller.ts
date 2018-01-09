@@ -16,19 +16,20 @@ class RecordController
     public set Framerate(value:number) { this._Framerate = value; }
     public get LightExposition():boolean { return this._LightExposition; }
     public set LightExposition(value:boolean) { this._LightExposition = value; }
-    public constructor(Canvas:HTMLCanvasElement, Document:Document, Animations:AnimationsController, Renderer:any)
+    public constructor(Document:Document, Animations:AnimationsController, Renderer:any)
     {
         this._Framerate = 30;
         this._LightExposition = false;
         this._Renderer = Renderer;
-        this._Canvas = Canvas;
+        this._Canvas = Renderer.Canvas;
         this._Document = Document;
         this._Animations = Animations;
     }
     public Record() : void
     {
-        this._Document.Images.splice(0);
-        this._Document.Exposition.splice(0);
+        console.log("Recording at " + this._Framerate + " FPS.");
+        this._Canvas = this._Renderer.Canvas;
+        this._Document.Clear();
         this._Animations.ToggleReplay(false);
         this._Animations.PrepareCapture();
         for(let i = 0; i < this._Framerate; i++)

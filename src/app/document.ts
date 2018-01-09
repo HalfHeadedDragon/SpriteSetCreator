@@ -12,7 +12,9 @@ class Document
     public get Data():any { return this._Data; }
     public set Data(value:any) { this._Data = value; }
     public get Images():ImageObject[] { return this._Images; }
+    public set Images(value:ImageObject[]) { this._Images = value; }
     public get Exposition():ImageObject[] { return this._Exposition; }
+    public set Exposition(value:ImageObject[]) { this._Exposition = value; }
     public constructor()
     {
         this._Images = [];
@@ -33,5 +35,10 @@ class Document
         {
             this.OnTextureImport[i](Path);
         }
+    }
+    public Clear()
+    {
+        this._Images = [];
+        this._Exposition = [];
     }
 }

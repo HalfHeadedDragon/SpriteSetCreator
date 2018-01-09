@@ -30,6 +30,7 @@ class Renderer
     public get Models():ModelsController { return this._Models; }
     public get Animations():AnimationsController { return this._Animations; }
     public get Recorder():RecordController { return this._Recorder; }
+    public get Canvas():HTMLCanvasElement { return this._Target; }
     public constructor(Resolution:any, Document:Document)
     {
         this._Resolution = Resolution;
@@ -46,7 +47,7 @@ class Renderer
         this._Light = new LightController(this._Scene);
         this._Animations = new AnimationsController();
         this._Models = new ModelsController(this._Scene, this._Animations);
-        this._Recorder = new RecordController(this._Target, this._Document, this._Animations, this);
+        this._Recorder = new RecordController(this._Document, this._Animations, this);
         this._Renderer = new Three.WebGLRenderer({canvas:this._Target, alpha:true, preserveDrawingBuffer: true});
         this._Renderer.setPixelRatio( window.devicePixelRatio );
         this._Renderer.setSize( Resolution.X, Resolution.Y );
