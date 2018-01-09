@@ -1,7 +1,7 @@
 <div class="main">
     <p class="def title" (click) = "Toggle()">Animations</p>
-    <div *ngIf="Toggled" class="def body">
-        <div *ngIf="Animations" class="def col-md-12">
+    <div *ngIf="Toggled && Animations && Animations.Available" class="def body">
+        <div class="def col-md-12">
             <div *ngFor="let Anim of Animations.Weights; let index = index; trackBy:trackByIndex;" class="def col-md-12">
                 <label class="def label col-md-5">Animation {{index+1}}:</label>
                 <input type="number" class="def col-md-6" [(ngModel)]="Animations.Weights[index]" (change)="UpdateWeights()" />

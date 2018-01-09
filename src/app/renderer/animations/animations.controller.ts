@@ -14,6 +14,7 @@ class AnimationsController
     public get Replay():boolean { return this._Replay; }
     public get Weights():number[] { return this._Weights; }
     public set Weights(value:number[]) { this._Weights = value; }
+    public get Available():boolean { return this._Animations && this._Animations.length > 0; }
     public constructor()
     {
         this.Init();

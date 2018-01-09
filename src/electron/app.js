@@ -40,7 +40,7 @@ class App
     }
     CreateMainWindow()
     {
-        this._MainWindow = new Window(900, 600, Path + "index.html");
+        this._MainWindow = new Window(900, 600, Path);
     }
     CreateProjectIO()
     {

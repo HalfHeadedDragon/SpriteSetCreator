@@ -7,5 +7,6 @@
                 <li *ngFor="let Model of ModelList" [ngClass]="{'item-selected': Models.Selected == Model}" class="item" (click)="Select(Model)">{{Model.Mesh.name}}</li>
             </ul>
         </div>
+        <a class="button-control col-md-12" style="margin-top:5px;" (click)="LoadModel()">Import Model</a>
     </div>
 </div>

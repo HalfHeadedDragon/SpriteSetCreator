@@ -16,7 +16,7 @@
     text-align: center;
     font-size:13px;
     width:100%;
-    background-color: #252525;
+    background-color: #454545;
     cursor: pointer;
 }
 .body
@@ -44,4 +44,17 @@
 .item-selected:hover
 {
     background-color: #FF1111 !important;
+}
+.button-control
+{
+    color:white;
+    background-color: #333333;
+    height:22px;
+    font-size:12px;
+    text-align: center;
+    cursor:pointer;
+}
+.button-control:hover
+{
+    background-color: #444444;
 }

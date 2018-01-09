@@ -15,9 +15,10 @@ class ProjectIO
     }
     Init()
     {
-        this._Window.MainMenu.CreateModelMenu([this.ImportModel.bind(this)]);
+        //this._Window.MainMenu.CreateModelMenu([this.ImportModel.bind(this)]);
         ipcMain.on("export-images", this.ExportImages.bind(this));
         ipcMain.on("run-normal-map-generator", this.RunNormalMapGenerator.bind(this));
+        ipcMain.on("model-load-init", this.ImportModel.bind(this));
         ipcMain.on("texture-load-init", this.TextureLoad.bind(this));
     }
     ImportModel()

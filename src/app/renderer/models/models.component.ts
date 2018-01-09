@@ -1,4 +1,5 @@
 import { Component, Input, NgZone } from '@angular/core';
+import { ElectronService } from 'ngx-electron';
 
 import { ModelsController } from "./models.controller";
 
@@ -14,7 +15,7 @@ export class ModelsComponent
     public get Toggled():boolean { return this._Toggled; }
     @Input() Models:ModelsController;
     public ModelList:any[];
-    public constructor(private _Zone:NgZone)
+    public constructor(private _Zone:NgZone, private _ElectronService: ElectronService)
     {
         this._Toggled = true;
     }
@@ -35,5 +36,12 @@ export class ModelsComponent
     public Toggle() : void
     {
         this._Toggled = !this._Toggled;
+    }
+    public LoadModel() : void
+    {
+        if(this._ElectronService.isElectronApp)
+        {
+            this._ElectronService.ipcRenderer.send("model-load-init");
+        }
     }
 }
