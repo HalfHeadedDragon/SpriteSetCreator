@@ -12,13 +12,15 @@ import { Document } from "./../document";
 })
 export class PreviewComponent
 {
-    public Name:string;
-    public Exposure:boolean;
+    private _Name:string;
+    private _Exposure:boolean;
+    public get Name():string { return this._Name; }
+    public get Exposure():boolean { return this._Exposure; }
     @Input() Document:Document;
     public constructor(private _ElectronService: ElectronService, private Sanitizer:DomSanitizer) 
     {
-        this.Name = "Sprite";
-        this.Exposure = false;
+        this._Name = "Sprite";
+        this._Exposure = false;
     }
     public ngOnInit() : void {}
     private Sanitize(Url:string)
@@ -27,16 +29,16 @@ export class PreviewComponent
     }
     private ToggleSprite()
     {
-        this.Exposure = false;
+        this._Exposure = false;
     }
     private ToggleExposure()
     {
-        this.Exposure = true;
+        this._Exposure = true;
     }
     public Export()
     {
         let Items;
-        if(this.Exposure) Items = this.Document.Exposition;
+        if(this._Exposure) Items = this.Document.Exposure;
         else
         {
             Items = this.Document.Images;

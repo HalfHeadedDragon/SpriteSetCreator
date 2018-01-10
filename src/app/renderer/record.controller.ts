@@ -6,7 +6,7 @@ import { AnimationsController } from "./animations/animations.controller";
 
 class RecordController
 {
-    private _LightExposition:boolean;
+    private _LightExposure:boolean;
     private _Renderer:any;
     private _Framerate:number;
     private _Canvas:HTMLCanvasElement;
@@ -14,12 +14,12 @@ class RecordController
     private _Animations:AnimationsController;
     public get Framerate():number { return this._Framerate; }
     public set Framerate(value:number) { this._Framerate = value; }
-    public get LightExposition():boolean { return this._LightExposition; }
-    public set LightExposition(value:boolean) { this._LightExposition = value; }
+    public get LightExposure():boolean { return this._LightExposure; }
+    public set LightExposure(value:boolean) { this._LightExposure = value; }
     public constructor(Document:Document, Animations:AnimationsController, Renderer:any)
     {
         this._Framerate = 30;
-        this._LightExposition = false;
+        this._LightExposure = false;
         this._Renderer = Renderer;
         this._Canvas = Renderer.Canvas;
         this._Document = Document;
@@ -41,8 +41,8 @@ class RecordController
             this._Document.Images.push(NewImage);
         }
         let Directions = ["Right","Left","Up","Down"];
-        this._Renderer.Models.ActivateExposition();
-        if(this._LightExposition)
+        this._Renderer.Models.ActivateExposure();
+        if(this._LightExposure)
         {
             for(let i = 0; i < 4; i++)
             {
@@ -54,12 +54,12 @@ class RecordController
                     this._Renderer.Redraw();
                     let Data = this._Canvas.toDataURL();
                     let NewImage = new ImageObject(Directions[i]+(j+1),Data);
-                    this._Document.Exposition.push(NewImage);
+                    this._Document.Exposure.push(NewImage);
                 }
             }
         }
         this._Renderer.Light.SwitchLight(0);
-        this._Renderer.Models.DeactivateExposition();
+        this._Renderer.Models.DeactivateExposure();
         if(this._Renderer.Electron.isElectronApp)
         {
             this._Renderer.Electron.ipcRenderer.send("show-message", "Record Finished", "Recording at " + this._Framerate + " FPS has finished.");

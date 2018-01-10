@@ -6,7 +6,7 @@ class LightController
 {
     private _Scene:Three.Scene;
     private _Light:Three.Light;
-    private _ExpositionLights:Three.Light[];
+    private _ExposureLights:Three.Light[];
     private _AmbientLight:Three.AmbientLight;
     public get Light():Three.Light { return this._Light; }
     public get Ambient():Three.AmbientLight { return this._AmbientLight; }
@@ -26,19 +26,19 @@ class LightController
         this._Light = new Three.SpotLight( 0xffffff, 2, 4000, Math.PI / 2, 0.2 );
         this._Light.position.copy(Position);
         this._AmbientLight = new Three.AmbientLight( 0x404040 );
-        this._ExpositionLights = [];
-        let ExpositionLight = new Three.SpotLight(0xffffff, 1);
-        ExpositionLight.position.set(1000, 180, 0);
-        this._ExpositionLights.push(ExpositionLight);
-        ExpositionLight = new Three.SpotLight(0xffffff, 1);
-        ExpositionLight.position.set(-1000, 180, 0);
-        this._ExpositionLights.push(ExpositionLight);
-        ExpositionLight = new Three.SpotLight(0xffffff, 1);
-        ExpositionLight.position.set(0, 1000, 0);
-        this._ExpositionLights.push(ExpositionLight);
-        ExpositionLight = new Three.SpotLight(0xffffff, 1);
-        ExpositionLight.position.set(0, -1000, 0);
-        this._ExpositionLights.push(ExpositionLight);
+        this._ExposureLights = [];
+        let ExposureLight = new Three.SpotLight(0xffffff, 1);
+        ExposureLight.position.set(1000, 180, 0);
+        this._ExposureLights.push(ExposureLight);
+        ExposureLight = new Three.SpotLight(0xffffff, 1);
+        ExposureLight.position.set(-1000, 180, 0);
+        this._ExposureLights.push(ExposureLight);
+        ExposureLight = new Three.SpotLight(0xffffff, 1);
+        ExposureLight.position.set(0, 1000, 0);
+        this._ExposureLights.push(ExposureLight);
+        ExposureLight = new Three.SpotLight(0xffffff, 1);
+        ExposureLight.position.set(0, -1000, 0);
+        this._ExposureLights.push(ExposureLight);
     }
     private Attach(Scene:Three.Scene)
     {
@@ -50,7 +50,7 @@ class LightController
     {
         if(Index == 0)
         {
-            this._Scene.remove(this._ExpositionLights[3]);
+            this._Scene.remove(this._ExposureLights[3]);
             this._Scene.add(this._AmbientLight);
             this._Scene.add(this._Light);
         }
@@ -58,12 +58,12 @@ class LightController
         {
             this._Scene.remove(this._AmbientLight);
             this._Scene.remove(this._Light);
-            this._Scene.add(this._ExpositionLights[0]);
+            this._Scene.add(this._ExposureLights[0]);
         }
         else
         {
-            this._Scene.remove(this._ExpositionLights[Index - 2]);
-            this._Scene.add(this._ExpositionLights[Index - 1]);
+            this._Scene.remove(this._ExposureLights[Index - 2]);
+            this._Scene.add(this._ExposureLights[Index - 1]);
         }
     }
 }

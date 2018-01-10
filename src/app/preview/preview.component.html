@@ -3,8 +3,8 @@
     <div class="def body">
         <div *ngIf="Document.Images.length > 0" class="options row">
             <span class="button-control col-md-1" [ngClass]="{'button-selected': !Exposure}" (click)="ToggleSprite()">Sprites</span>
-            <span *ngIf="Document.Exposition.length > 0" class="button-control col-md-1" [ngClass]="{'button-selected': Exposure}" (click)="ToggleExposure()">Exposure</span>
-            <span *ngIf="Document.Exposition.length == 0" class="col-md-1"></span>
+            <span *ngIf="Document.Exposure.length > 0" class="button-control col-md-1" [ngClass]="{'button-selected': Exposure}" (click)="ToggleExposure()">Exposure</span>
+            <span *ngIf="Document.Exposure.length == 0" class="col-md-1"></span>
             <span class="col-md-7"></span>
             <span *ngIf="Exposure" class="col-md-2"></span>
             <input *ngIf="!Exposure" type="text" class="def text col-md-2" [(ngModel)]="Name" />
@@ -18,7 +18,7 @@
             </li>
         </ul>
         <ul *ngIf="Exposure" class="def objects col-md-12">
-            <li *ngFor="let Object of Document.Exposition" class="object">
+            <li *ngFor="let Object of Document.Exposure" class="object">
                 <div>
                     <img class="icon" [src]="Object.DataUrl" />
                 </div>

@@ -6,39 +6,41 @@ class Document
 {
     private _Data:any;
     private _Images:ImageObject[];
-    private _Exposition:ImageObject[];
-    public OnModelImport:Function[];
-    public OnTextureImport:Function[];
+    private _Exposure:ImageObject[];
+    public _OnModelImport:Function[];
+    public _OnTextureImport:Function[];
     public get Data():any { return this._Data; }
     public set Data(value:any) { this._Data = value; }
     public get Images():ImageObject[] { return this._Images; }
     public set Images(value:ImageObject[]) { this._Images = value; }
-    public get Exposition():ImageObject[] { return this._Exposition; }
-    public set Exposition(value:ImageObject[]) { this._Exposition = value; }
+    public get Exposure():ImageObject[] { return this._Exposure; }
+    public set Exposure(value:ImageObject[]) { this._Exposure = value; }
+    public get OnModelImport():Function[] { return this._OnModelImport; }
+    public get OnTextureImport():Function[] { return this._OnTextureImport; }
     public constructor()
     {
         this._Images = [];
-        this._Exposition = [];
-        this.OnModelImport = [];
-        this.OnTextureImport = [];
+        this._Exposure = [];
+        this._OnModelImport = [];
+        this._OnTextureImport = [];
     }
     public ImportModel(Path)
     {
-        for(let i in this.OnModelImport)
+        for(let i in this._OnModelImport)
         {
-            this.OnModelImport[i](Path);
+            this._OnModelImport[i](Path);
         }
     }
     public ImportTexture(Path)
     {
-        for(let i in this.OnTextureImport)
+        for(let i in this._OnTextureImport)
         {
-            this.OnTextureImport[i](Path);
+            this._OnTextureImport[i](Path);
         }
     }
     public Clear()
     {
         this._Images = [];
-        this._Exposition = [];
+        this._Exposure = [];
     }
 }

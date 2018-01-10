@@ -106,13 +106,13 @@ class Model
             else this.Mesh.material = new Three.MeshToonMaterial( { color: this.Mesh.material["color"], shininess:this.Mesh.material["shininess"], specular:this.Mesh.material["specular"], skinning: true, map:Texture });
         }
     }
-    public ActivateExposition() : void
+    public ActivateExposure() : void
     {
         this._Material = this.Mesh.material;
         if(!this._Toon) this.Mesh.material = new Three.MeshPhongMaterial( { color: 0xFFFFFF, shininess:this.Mesh.material["shininess"], specular:this.Mesh.material["specular"], skinning: true });
         else this.Mesh.material = new Three.MeshToonMaterial( { color: 0xFFFFFF, shininess:this.Mesh.material["shininess"], specular:this.Mesh.material["specular"], skinning: true });
     }
-    public DeactivateExposition() : void
+    public DeactivateExposure() : void
     {
         this.Mesh.material = this._Material;
     }

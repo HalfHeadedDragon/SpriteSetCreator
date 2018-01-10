@@ -12,13 +12,14 @@ import { Document } from "./document";
 })
 export class AppComponent
 {
-  public Document:Document;
+  private _Document:Document;
   private _Title:string;
   private _SideBarOption:number;
+  public get Document():Document { return this._Document; }
   public get SideBarOption():number { return this._SideBarOption; }
   public constructor(private _ElectronService: ElectronService, private _Zone:NgZone)
   {
-    this.Document = new Document();
+    this._Document = new Document();
     this._Title = 'HHD - SpriteSet Creator';
     this._SideBarOption = 0;
   }
@@ -34,13 +35,13 @@ export class AppComponent
   private ImportTextureHandler(Event, Data) { this._Zone.run(function() { this.ImportTexture(Data) }.bind(this));}
   private ImportModel(Path)
   {
-    this.Document.ImportModel(Path);
+    this._Document.ImportModel(Path);
   }
   private ImportTexture(Path)
   {
-    this.Document.ImportTexture(Path);
+    this._Document.ImportTexture(Path);
   }
-  private SelectOption(Option:number) : void
+  public SelectOption(Option:number) : void
   {
     if(Option == this._SideBarOption) this._SideBarOption = -1;
     else this._SideBarOption = Option;

@@ -1,8 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="def page">
     <div class="def navigation">
-        <i class="icon fa fa-eye" [ngClass]="{'icon-selected': _SideBarOption == 0}" (click)="SelectOption(0)"></i>
-        <i class="icon fa fa-picture-o" [ngClass]="{'icon-selected': _SideBarOption == 1}" (click)="SelectOption(1)"></i>
+        <i class="icon fa fa-eye" [ngClass]="{'icon-selected': SideBarOption == 0}" (click)="SelectOption(0)"></i>
+        <i class="icon fa fa-picture-o" [ngClass]="{'icon-selected': SideBarOption == 1}" (click)="SelectOption(1)"></i>
     </div>
     <div  class="def content row">
         <div *ngIf="SideBarOption == 0" class="def col-md-12">

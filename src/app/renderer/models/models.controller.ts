@@ -96,26 +96,26 @@ export class ModelsController
             this._Selected.Mesh.visible = true;
         }
     }
-    public ActivateExposition() : void
+    public ActivateExposure() : void
     {
         if(this._Selected)
         {
-            this._Selected.ActivateExposition();
+            this._Selected.ActivateExposure();
         }
         else
         {
-            for(let i in this._Models) this._Models[i].ActivateExposition();
+            for(let i in this._Models) this._Models[i].ActivateExposure();
         }
     }
-    public DeactivateExposition() : void
+    public DeactivateExposure() : void
     {
         if(this._Selected)
         {
-            this._Selected.DeactivateExposition();
+            this._Selected.DeactivateExposure();
         }
         else
         {
-            for(let i in this._Models) this._Models[i].DeactivateExposition();
+            for(let i in this._Models) this._Models[i].DeactivateExposure();
         }
     }
 }
