@@ -12,8 +12,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "electron": "ng build --prod && electron .",
-    "electron-dev": "electron . --serve"
+    "electron-dev": "electron . --serve",
+    "electron-prod": "electron-packager . --electronVersion=1.7.10 --out=release-builds --overwrite --arch=x64"
   },
   "repository": {
     "type": "git",
@@ -59,6 +59,7 @@
     "@types/node": "~6.0.60",
     "@types/three": "^0.89.0",
     "codelyzer": "~3.2.0",
+    "electron-packager": "^10.1.1",
     "electron-reload": "^1.2.2",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
